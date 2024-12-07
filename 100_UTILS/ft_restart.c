@@ -42,7 +42,6 @@ static void	launch_new_prog(char **next_map, t_gobj *game)
 	}
 	if (pid == 0)
 	{
-		ft_printf("\n");
 		execve(next_map[0], next_map, game->envp);
 		ft_free_rlines(&next_map);
 		ft_end(game, -1);

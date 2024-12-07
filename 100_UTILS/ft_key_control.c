@@ -27,15 +27,14 @@ int	ft_key_control(t_gobj *game)
 		if (game->keys_state[XK_Escape])
 			ft_quit_game(game);
 		if (game->keys_state[XK_w] && !game->keys_state[XK_s] && moveable)
-			game->p1->moves += ft_move_player_n(game);
+			ft_move_player_n(game);
 		if (game->keys_state[XK_a] && !game->keys_state[XK_d] && moveable)
-			game->p1->moves += ft_move_player_w(game);
+			ft_move_player_w(game);
 		if (game->keys_state[XK_s] && !game->keys_state[XK_w] && moveable)
-			game->p1->moves += ft_move_player_s(game);
+			ft_move_player_s(game);
 		if (game->keys_state[XK_d] && !game->keys_state[XK_a] && moveable)
-			game->p1->moves += ft_move_player_e(game);
+			ft_move_player_e(game);
 		ft_print_map(game);
 	}
-	ft_print_stats(game);
 	return (0);
 }

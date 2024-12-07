@@ -20,7 +20,7 @@ static int	valid_move(t_gobj *game, int pi, int pj)
 		&& game->str.map[(pj + 15) / 32][(pi + 15) / 32] != '1');
 }
 
-int	ft_move_player_n(t_gobj *game)
+void	ft_move_player_n(t_gobj *game)
 {
 	int	speed;
 
@@ -35,10 +35,11 @@ int	ft_move_player_n(t_gobj *game)
 	}
 	game->p1->coin_count -= ft_collect(game, game->p1->i, game->p1->j);
 	ft_exit_area(game, &(game->p1));
-	return (speed);
+	game->p1->moves += speed;
+	ft_print_stats(game);
 }
 
-int	ft_move_player_s(t_gobj *game)
+void	ft_move_player_s(t_gobj *game)
 {
 	int	speed;
 
@@ -53,10 +54,11 @@ int	ft_move_player_s(t_gobj *game)
 	}
 	game->p1->coin_count -= ft_collect(game, game->p1->i, game->p1->j);
 	ft_exit_area(game, &(game->p1));
-	return (speed);
+	game->p1->moves += speed;
+	ft_print_stats(game);
 }
 
-int	ft_move_player_w(t_gobj *game)
+void	ft_move_player_w(t_gobj *game)
 {
 	int	speed;
 
@@ -71,10 +73,11 @@ int	ft_move_player_w(t_gobj *game)
 	}
 	game->p1->coin_count -= ft_collect(game, game->p1->i, game->p1->j);
 	ft_exit_area(game, &(game->p1));
-	return (speed);
+	game->p1->moves += speed;
+	ft_print_stats(game);
 }
 
-int	ft_move_player_e(t_gobj *game)
+void	ft_move_player_e(t_gobj *game)
 {
 	int	speed;
 
@@ -89,5 +92,6 @@ int	ft_move_player_e(t_gobj *game)
 	}
 	game->p1->coin_count -= ft_collect(game, game->p1->i, game->p1->j);
 	ft_exit_area(game, &(game->p1));
-	return (speed);
+	game->p1->moves += speed;
+	ft_print_stats(game);
 }

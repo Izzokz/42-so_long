@@ -91,5 +91,6 @@ int	main(int argc, char **argv, char **envp)
 	if (ft_img_init(&game) < 0)
 		ft_end(&game, -1);
 	ft_loop_process(&game);
+	ft_printf("\n");
 	mlx_loop(game.mlx);
 }
