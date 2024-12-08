@@ -28,6 +28,6 @@ void	ft_exit_area(t_gobj *game, t_player **player)
 		&& (*player)->coin_count == 0)
 	{
 		(*player)->finish = 1;
-		(game->player_count)--;
+		game->player_count = game->p1->finish == 0;
 	}
 }

@@ -14,11 +14,11 @@
 # define SO_LONG_GOBJ_H
 
 # ifndef SPEED
-#  define SPEED 2.0f
+#  define SPEED 1.0f
 # endif
 
 # ifndef FPS
-#  define FPS 220.0f
+#  define FPS 220.0f //Force Player Speed
 # endif
 
 typedef struct s_player

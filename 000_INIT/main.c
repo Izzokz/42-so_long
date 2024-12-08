@@ -85,12 +85,13 @@ int	main(int argc, char **argv, char **envp)
 	if (!game.mlx)
 		ft_end(&game, -1);
 	game.win = mlx_new_window(game.mlx, game.width * 32,
-			game.height * 32, "So Long King Bowser");
+			game.height * 32, "SoulM8");
 	if (!game.win)
 		ft_end(&game, -1);
 	if (ft_img_init(&game) < 0)
 		ft_end(&game, -1);
 	ft_loop_process(&game);
 	ft_printf("\n");
+	ft_print_stats(&game);
 	mlx_loop(game.mlx);
 }
