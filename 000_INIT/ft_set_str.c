@@ -51,6 +51,7 @@ int	ft_set_str(t_gobj *game)
 	str.map = NULL;
 	str.map_dep = NULL;
 	str.msg = ft_readfile_split("999_GOBJ/str/msg.txt", "***----***\n");
+	ft_slines_cutendl(&(str.msg));
 	if (!(str.msg))
 	{
 		ft_printf_err("A problem occured (ft_set_str.c:53)", 1);

@@ -17,8 +17,12 @@
 #  define SPEED 1.0f
 # endif
 
-# ifndef FPS
-#  define FPS 220.0f //Force Player Speed
+# ifndef FPS //Force Player Speed
+#  define FPS 220.0f
+# endif
+
+# ifndef OWLINE // Over Write Line
+#  define OWLINE "\r                                                         \r"
 # endif
 
 typedef struct s_player
@@ -37,6 +41,7 @@ typedef struct s_str
 	t_slines	msg;
 	t_rlines	map;
 	t_rlines	map_dep;
+	char		*next_map;
 }		t_str;
 
 typedef struct s_gobj
@@ -47,12 +52,12 @@ typedef struct s_gobj
 	t_str		str;
 	void		*dmap;
 	t_player	*p1;
-	char *const	*envp;
-	char		*pwd;
 	int			height;
 	int			width;
 	int			keys_state[131072];
 	int			player_count;
+	int			stage;
+	int			loaded;
 }		t_gobj;
 
 #endif

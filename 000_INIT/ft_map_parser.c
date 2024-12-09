@@ -109,8 +109,6 @@ static int	valid_map(t_rlines map)
 
 void	ft_map_parser(t_gobj *game, char *map_name)
 {
-	if (ft_set_str(game) == -1)
-		ft_end(game, -1);
 	ft_get_map_data(game, map_name);
 	if (invalid_rlines(game->str.map) || invalid_slines(game->str.msg)
 		|| zombie_rlines_free(&(game->str.map_dep)))

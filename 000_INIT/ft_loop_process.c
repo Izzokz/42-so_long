@@ -28,8 +28,11 @@ static int	key_disable(int keycode, t_gobj *game)
 
 static int	all_processes(t_gobj *game)
 {
-	ft_key_control(game);
-	is_complete(game);
+	if (game->loaded)
+	{
+		ft_key_control(game);
+		is_complete(game);
+	}
 	return (0);
 }
 

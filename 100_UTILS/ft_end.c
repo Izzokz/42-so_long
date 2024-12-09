@@ -34,8 +34,6 @@ void	ft_end(t_gobj *game, int exit_id)
 	if (game->win)
 		mlx_destroy_window(game->mlx, game->win);
 	ft_free_str(game->str);
-	if (game->pwd)
-		free(game->pwd);
 	if (game->mlx)
 	{
 		mlx_destroy_display(game->mlx);

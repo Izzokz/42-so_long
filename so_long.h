@@ -21,10 +21,13 @@
 # include <X11/keysym.h>
 
 float	ft_delta_time(void);
+int		ft_init_imgs(t_gobj *game);
+int		ft_init_window(t_gobj *game);
+void	ft_init_player(t_player *player, int plrid);
+int		ft_init_game(t_gobj *game, t_player *p1, char *map_name);
 void	ft_print_stats(t_gobj *game);
 int		ft_get_map_data(t_gobj *game, char *map_name);
 int		ft_set_str(t_gobj *game);
-int		ft_set_pwd(t_gobj *game, char **envp);
 void	ft_quit_game(t_gobj *game);
 void	ft_exit_area(t_gobj *game, t_player **player);
 int		is_complete(t_gobj *game);
@@ -37,7 +40,6 @@ void	ft_move_player_e(t_gobj *game);
 void	ft_set_player(t_gobj *game);
 int		ft_key_control(t_gobj *game);
 int		ft_loop_process(t_gobj *game);
-int		ft_load_img(t_gobj *game, char *filename);
 void	ft_print_map(t_gobj *game);
 void	ft_free_gobj(t_gobj *game);
 void	ft_end(t_gobj *game, int exit_id);

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_load_img.c                                      :+:      :+:    :+:   */
+/*   ft_init_imgs.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kzhen-cl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 16:34:42 by kzhen-cl          #+#    #+#             */
-/*   Updated: 2024/11/12 16:34:43 by kzhen-cl         ###   ########.fr       */
+/*   Updated: 2024/12/09 15:06:59 by kzhen-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-int	ft_load_img(t_gobj *game, char *filename)
+static int	ft_load_img(t_gobj *game, char *filename)
 {
 	char	*path;
 	void	*img;
@@ -31,4 +31,31 @@ int	ft_load_img(t_gobj *game, char *filename)
 		;
 	game->imgs[i.i] = img;
 	return (game->imgs[i.i] != NULL);
+}
+
+static int	ft_img_err(void)
+{
+	ft_printf("Missing image. Be sure to get all images installed.");
+	return (-1);
+}
+
+int	ft_init_imgs(t_gobj *game)
+{
+	int	count;
+
+	count = 5;
+	game->imgs = ft_calloc(count + 1, sizeof(void *));
+	if (!game->imgs)
+		return (-1);
+	if (!ft_load_img(game, "floor.xpm"))
+		return (ft_img_err());
+	if (!ft_load_img(game, "wall.xpm"))
+		return (ft_img_err());
+	if (!ft_load_img(game, "player1.xpm"))
+		return (ft_img_err());
+	if (!ft_load_img(game, "coin.xpm"))
+		return (ft_img_err());
+	if (!ft_load_img(game, "exit.xpm"))
+		return (ft_img_err());
+	return (count);
 }

@@ -4,9 +4,9 @@ INITDIR = 000_INIT/
 UTILDIR = 100_UTILS/
 RANDDIR = 030_FT_RANDOM/
 
-INITSRC = main.c ft_load_img.c ft_map_parser.c \
+INITSRC = main.c ft_init_imgs.c ft_map_parser.c \
 	ft_loop_process.c ft_count_coins.c \
-	ft_set_str.c ft_set_pwd.c
+	ft_set_str.c ft_init_game.c ft_init_window.c
 UTILSRC = ft_end.c ft_key_control.c ft_print_map.c \
 	ft_move_player.c ft_set_player.c ft_delta_time.c \
 	ft_collect.c ft_exit_area.c is_complete.c \
