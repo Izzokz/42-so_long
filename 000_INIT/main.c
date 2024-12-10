@@ -25,10 +25,16 @@ int	main(int argc, char **argv)
 {
 	t_gobj		game;
 	t_player	p1;
+	t_player	p2;
 
 	if (argc < 2)
 	{
 		ft_printf("No map given. Retry.");
+		return (-1);
+	}
+	if (SPEED > 32)
+	{
+		ft_printf("BRO ARE YOU TRYNA BREAK THE GAME?? SPEED=%d\n", (int)SPEED);
 		return (-1);
 	}
 	game.mlx = mlx_init();
@@ -39,6 +45,6 @@ int	main(int argc, char **argv)
 	}
 	game.stage = 0;
 	ft_set_keys(&game);
-	if (ft_init_game(&game, &p1, argv[1]) == -1)
+	if (ft_init_game(&game, &p1, &p2, argv[1]) == -1)
 		ft_end(&game, -1);
 }

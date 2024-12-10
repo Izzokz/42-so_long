@@ -17,7 +17,8 @@ int	is_complete(t_gobj *game)
 	int		mp1;
 	char	*msg;
 
-	if (game->player_count == 0)
+	if (game->p1->finish == 1 && (game->p2->finish == -2
+			|| game->p2->finish == 1))
 	{
 		mp1 = game->p1->moves / 32;
 		msg = ft_str_random(game->str.msg[1]);

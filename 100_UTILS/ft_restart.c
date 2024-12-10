@@ -23,6 +23,6 @@ void	ft_restart(t_gobj *game)
 		ft_printf_err("Sorry, we encountered issue generating another map", 1);
 		ft_end(game, -1);
 	}
-	if (ft_init_game(game, game->p1, game->str.next_map) == -1)
+	if (ft_init_game(game, game->p1, game->p2, game->str.next_map) == -1)
 		ft_end(game, -1);
 }

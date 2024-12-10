@@ -17,7 +17,7 @@
 #  define SPEED 1.0f
 # endif
 
-# ifndef FPS //Force Player Speed
+# ifndef FPS // Force Player Speed
 #  define FPS 220.0f
 # endif
 
@@ -52,6 +52,7 @@ typedef struct s_gobj
 	t_str		str;
 	void		*dmap;
 	t_player	*p1;
+	t_player	*p2;
 	int			height;
 	int			width;
 	int			keys_state[131072];

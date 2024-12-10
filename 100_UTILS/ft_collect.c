@@ -12,6 +12,31 @@
 
 #include "../so_long.h"
 
+int	ft_collect2(t_gobj *game, int pi, int pj)
+{
+	if (game->str.map[pj / 32][pi / 32] == '$')
+	{
+		game->str.map[pj / 32][pi / 32] = '-';
+		return (1);
+	}
+	if (game->str.map[(pj + 15) / 32][pi / 32] == '$')
+	{
+		game->str.map[(pj + 15) / 32][pi / 32] = '-';
+		return (1);
+	}
+	if (game->str.map[pj / 32][(pi + 15) / 32] == '$')
+	{
+		game->str.map[pj / 32][(pi + 15) / 32] = '-';
+		return (1);
+	}
+	if (game->str.map[(pj + 15) / 32][(pi + 15) / 32] == '$')
+	{
+		game->str.map[(pj + 15) / 32][(pi + 15) / 32] = '-';
+		return (1);
+	}
+	return (0);
+}
+
 int	ft_collect(t_gobj *game, int pi, int pj)
 {
 	if (game->str.map[pj / 32][pi / 32] == 'C')
