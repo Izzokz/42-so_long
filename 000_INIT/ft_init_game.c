@@ -52,6 +52,7 @@ static void	ft_init_gobj(t_gobj *game, t_player *p1, t_player *p2)
 	{
 		mlx_destroy_image(game->mlx, game->dmap);
 		mlx_destroy_window(game->mlx, game->win);
+		game->win = NULL;
 		game->dmap = NULL;
 		ft_free_rlines(&(game->str.map));
 		ft_free_rlines(&(game->str.map_dep));

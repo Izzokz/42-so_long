@@ -28,8 +28,9 @@ void	ft_print_stats(t_gobj *game)
 	players = game->player_count;
 	mp1 = game->p1->moves / 32;
 	cp1 = game->p1->coin_count;
-	mlx_string_put(game->mlx, game->win, center_stats("ABCDEABCDEAAABCDE", game->p1->i),
-			game->p1->j - 4, 0x000000, "ABCDEABCDEAAABCDE");
+	if (game->p1->finish == 0)
+		mlx_string_put(game->mlx, game->win, center_stats("ABCDEABCDEAAABCDE", game->p1->i),
+				game->p1->j - 4, 0x000000, "ABCDEABCDEAAABCDE");
 	ft_printf("%sPlayers : %d", OWLINE, players);
 	ft_printf("P1 Moves: %d\t", mp1);
 	ft_printf("P1 Remaining Coins: %d", cp1);
