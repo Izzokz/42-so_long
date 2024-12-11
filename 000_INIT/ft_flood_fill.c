@@ -26,30 +26,30 @@ static void	ft_flood_fill_p1(t_rlines *map, int i, int j)
 int	ft_playable_p1(t_rlines map, int i, int j)
 {
 	t_rlines	temp;
-	int			x;
-	int			y;
-	int			fail;
+	t_ints		t;
 
 	temp = ft_rlines_dup(map);
 	if (!temp)
 	{
-		ft_printf_err("so_long:ft_flood_fill.c:34:ft_rlines_dup()", 0);
+		ft_printf_err("so_long:ft_flood_fill.c:31:ft_rlines_dup()", 0);
 		return (0);
 	}
 	ft_flood_fill_p1(&temp, i, j);
-	x = -1;
-	fail = 0;
-	while (temp[++x])
+	t.x = -1;
+	t.count = 0;
+	while (temp[++(t.x)])
 	{
-		y = -1;
-		while (temp[x][++y])
-			if (temp[x][y] != '0' && temp[x][y] != '1' && temp[x][y] != '$'
-				&& temp[x][y] != '+' && temp[x][y] != '-'
-				&& temp[x][y] != '@' && temp[x][y] != '#')
-				fail++;
+		t.y = -1;
+		while (temp[t.x][++(t.y)])
+			if (temp[t.x][t.y] != '0' && temp[t.x][t.y] != '1'
+				&& temp[t.x][t.y] != '$' && temp[t.x][t.y] != '+'
+				&& temp[t.x][t.y] != '-' && temp[t.x][t.y] != '@'
+				&& temp[t.x][t.y] != '#' && temp[t.x][t.y] != '!'
+				&& temp[t.x][t.y] != '?')
+				(t.count)++;
 	}
 	ft_free_rlines(&temp);
-	return (!fail);
+	return (!t.count);
 }
 
 static void	ft_flood_fill_p2(t_rlines *map, int i, int j)
@@ -63,31 +63,34 @@ static void	ft_flood_fill_p2(t_rlines *map, int i, int j)
 	ft_flood_fill_p2(map, i, j - 1);
 }
 
+/*
+t.count counts if it fails
+*/
 int	ft_playable_p2(t_rlines map, int i, int j)
 {
 	t_rlines	temp;
-	int			x;
-	int			y;
-	int			fail;
+	t_ints		t;
 
 	temp = ft_rlines_dup(map);
 	if (!temp)
 	{
-		ft_printf_err("so_long:ft_flood_fill.c:75:ft_rlines_dup()", 0);
+		ft_printf_err("so_long:ft_flood_fill.c:74:ft_rlines_dup()", 0);
 		return (0);
 	}
 	ft_flood_fill_p2(&temp, i, j);
-	x = -1;
-	fail = 0;
-	while (temp[++x])
+	t.x = -1;
+	t.count = 0;
+	while (temp[++(t.x)])
 	{
-		y = -1;
-		while (temp[x][++y])
-			if (temp[x][y] != '0' && temp[x][y] != '1' && temp[x][y] != 'C'
-				&& temp[x][y] != '+' && temp[x][y] != '-'
-				&& temp[x][y] != 'P' && temp[x][y] != 'E')
-				fail++;
+		t.y = -1;
+		while (temp[t.x][++(t.y)])
+			if (temp[t.x][t.y] != '0' && temp[t.x][t.y] != '1'
+				&& temp[t.x][t.y] != 'C' && temp[t.x][t.y] != '+'
+				&& temp[t.x][t.y] != '-' && temp[t.x][t.y] != 'P'
+				&& temp[t.x][t.y] != 'E' && temp[t.x][t.y] != '!'
+				&& temp[t.x][t.y] != '?')
+				(t.count)++;
 	}
 	ft_free_rlines(&temp);
-	return (!fail);
+	return (!t.count);
 }

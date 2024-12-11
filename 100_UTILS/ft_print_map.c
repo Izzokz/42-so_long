@@ -56,6 +56,7 @@ void	ft_print_map(t_gobj *game)
 		while (game->str.map[i.i][++(i.j)])
 			ft_call_copy(game, i.i, i.j);
 	}
+	ft_print_doors(game);
 	ft_print_entities(game);
 	mlx_put_image_to_window(game->mlx, game->win, game->dmap, 0, 0);
 }
@@ -71,6 +72,7 @@ void	ft_update_dmap(t_gobj *game, int i, int j)
 	ft_call_copy(game, (j / 32) - 1, (i / 32) - 1);
 	ft_call_copy(game, (j / 32) + 1, (i / 32) - 1);
 	ft_call_copy(game, (j / 32) - 1, (i / 32) + 1);
+	ft_print_doors(game);
 	ft_print_entities(game);
 	mlx_put_image_to_window(game->mlx, game->win, game->dmap, 0, 0);
 }

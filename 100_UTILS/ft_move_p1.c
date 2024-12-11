@@ -21,7 +21,17 @@ int	is_valid_move(t_gobj *game, int pi, int pj)
 		&& game->str.map[pj / 32][pi / 32] != '+'
 		&& game->str.map[(pj + 15) / 32][pi / 32] != '+'
 		&& game->str.map[pj / 32][(pi + 15) / 32] != '+'
-		&& game->str.map[(pj + 15) / 32][(pi + 15) / 32] != '+');
+		&& game->str.map[(pj + 15) / 32][(pi + 15) / 32] != '+'
+		&& ((game->str.map[pj / 32][pi / 32] != '!'
+		&& game->str.map[(pj + 15) / 32][pi / 32] != '!'
+		&& game->str.map[pj / 32][(pi + 15) / 32] != '!'
+		&& game->str.map[(pj + 15) / 32][(pi + 15) / 32] != '!')
+		|| (game->p1->coin_count + game->p2->coin_count) % 2 == 0)
+		&& ((game->str.map[pj / 32][pi / 32] != '?'
+		&& game->str.map[(pj + 15) / 32][pi / 32] != '?'
+		&& game->str.map[pj / 32][(pi + 15) / 32] != '?'
+		&& game->str.map[(pj + 15) / 32][(pi + 15) / 32] != '?')
+		|| (game->p1->coin_count + game->p2->coin_count) % 2));
 }
 
 void	ft_move_p1_n(t_gobj *game)
