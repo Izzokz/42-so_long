@@ -54,6 +54,30 @@ static int	is_doable(t_rlines map)
 	return (i.count2 > 0);
 }
 
+static int	valid_door_placement(t_gobj *game)
+{
+	t_ints	i;
+
+	i.i = -1;
+	while (game->str.map[++(i.i)])
+	{
+		i.j = -1;
+		while (game->str.map[i.i][++(i.j)])
+			if ((game->str.map[i.i][i.j] == '?'
+				&& ((game->str.map[i.i + 1][i.j] == '?'
+					&& game->str.map[i.i - 1][i.j] == '?')
+				|| (game->str.map[i.i][i.j + 1] == '?'
+				&& game->str.map[i.i][i.j - 1] == '?')))
+				|| (game->str.map[i.i][i.j] == '!'
+				&& ((game->str.map[i.i + 1][i.j] == '!'
+				&& game->str.map[i.i - 1][i.j] == '!')
+				|| (game->str.map[i.i][i.j + 1] == '!'
+				&& game->str.map[i.i][i.j - 1] == '!'))))
+				return (0);
+	}
+	return (1);
+}
+
 static int	valid_map(t_gobj *game)
 {
 	t_ints	ints;
@@ -79,7 +103,7 @@ static int	valid_map(t_gobj *game)
 				game->p2->finish = 0;
 		}
 	}
-	return (is_doable(game->str.map));
+	return (is_doable(game->str.map) && valid_door_placement(game));
 }
 
 void	ft_map_parser(t_gobj *game, char *map_name)

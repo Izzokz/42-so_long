@@ -16,7 +16,7 @@
 static int	not_locked(t_gobj *game, int pi, int pj)
 {
 	return (((game->str.map[pj / 32][pi / 32] != '!'
-		&& game->str.map[(pj + 15) / 32][pi / 32] != '!'
+			&& game->str.map[(pj + 15) / 32][pi / 32] != '!'
 		&& game->str.map[pj / 32][(pi + 15) / 32] != '!'
 		&& game->str.map[(pj + 15) / 32][(pi + 15) / 32] != '!')
 		|| (game->p1->coin_count + game->p2->coin_count) % 2 == 0)
