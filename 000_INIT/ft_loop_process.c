@@ -38,8 +38,16 @@ static int	all_processes(t_gobj *game)
 	return (0);
 }
 
+static int	what_the(t_gobj *game)
+{
+	ft_printf("%sSurprising choice...\n", OWLINE);
+	ft_end(game, 0);
+	return (0);
+}
+
 int	ft_loop_process(t_gobj *game)
 {
+	mlx_hook(game->win, 17, 0, what_the, game);
 	mlx_hook(game->win, 2, 1L << 0, key_enable, game);
 	mlx_hook(game->win, 3, 1L << 1, key_disable, game);
 	mlx_loop_hook(game->mlx, all_processes, game);
