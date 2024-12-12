@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_move_player.c                                   :+:      :+:    :+:   */
+/*   ft_move_plr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kzhen-cl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 10:45:24 by kzhen-cl          #+#    #+#             */
-/*   Updated: 2024/12/05 10:45:25 by kzhen-cl         ###   ########.fr       */
+/*   Updated: 2024/12/12 17:05:05 by kzhen-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,82 +34,94 @@ int	is_valid_move(t_gobj *game, int pi, int pj)
 		|| (game->p1->coin_count + game->p2->coin_count) % 2));
 }
 
-void	ft_move_p1_n(t_gobj *game)
+void	ft_move_plr_n(t_gobj *game, t_player *plr)
 {
 	int	speed;
 
-	speed = (int)(game->p1->spd + 1.0f);
+	speed = (int)(plr->spd + 1.0f);
 	while (--speed > 0)
 	{
-		if (is_valid_move(game, game->p1->i, game->p1->j - speed))
+		if (is_valid_move(game, plr->i, plr->j - speed))
 		{
-			game->p1->j -= speed;
+			plr->j -= speed;
 			break ;
 		}
 	}
-	game->p1->coin_count -= ft_collect(game, game->p1->i, game->p1->j);
-	game->p1->moves += speed;
-	ft_exit_area(game, &(game->p1));
-	ft_update_dmap(game, game->p1->i, game->p1->j);
+	if (plr->exit == 'E')
+		plr->coin_count -= ft_collect(game, plr->i, plr->j);
+	else
+		plr->coin_count -= ft_collect2(game, plr->i, plr->j);
+	plr->moves += speed;
+	ft_exit_area(game, &plr);
+	ft_update_dmap(game, plr->i, plr->j);
 	ft_print_stats(game);
 }
 
-void	ft_move_p1_s(t_gobj *game)
+void	ft_move_plr_s(t_gobj *game, t_player *plr)
 {
 	int	speed;
 
-	speed = (int)(game->p1->spd + 1.0f);
+	speed = (int)(plr->spd + 1.0f);
 	while (--speed > 0)
 	{
-		if (is_valid_move(game, game->p1->i, game->p1->j + speed))
+		if (is_valid_move(game, plr->i, plr->j + speed))
 		{
-			game->p1->j += speed;
+			plr->j += speed;
 			break ;
 		}
 	}
-	game->p1->coin_count -= ft_collect(game, game->p1->i, game->p1->j);
-	game->p1->moves += speed;
-	ft_exit_area(game, &(game->p1));
-	ft_update_dmap(game, game->p1->i, game->p1->j);
+	if (plr->exit == 'E')
+		plr->coin_count -= ft_collect(game, plr->i, plr->j);
+	else
+		plr->coin_count -= ft_collect2(game, plr->i, plr->j);
+	plr->moves += speed;
+	ft_exit_area(game, &plr);
+	ft_update_dmap(game, plr->i, plr->j);
 	ft_print_stats(game);
 }
 
-void	ft_move_p1_w(t_gobj *game)
+void	ft_move_plr_w(t_gobj *game, t_player *plr)
 {
 	int	speed;
 
-	speed = (int)(game->p1->spd + 1.0f);
+	speed = (int)(plr->spd + 1.0f);
 	while (--speed > 0)
 	{
-		if (is_valid_move(game, game->p1->i - speed, game->p1->j))
+		if (is_valid_move(game, plr->i - speed, plr->j))
 		{
-			game->p1->i -= speed;
+			plr->i -= speed;
 			break ;
 		}
 	}
-	game->p1->coin_count -= ft_collect(game, game->p1->i, game->p1->j);
-	game->p1->moves += speed;
-	ft_exit_area(game, &(game->p1));
-	ft_update_dmap(game, game->p1->i, game->p1->j);
+	if (plr->exit == 'E')
+		plr->coin_count -= ft_collect(game, plr->i, plr->j);
+	else
+		plr->coin_count -= ft_collect2(game, plr->i, plr->j);
+	plr->moves += speed;
+	ft_exit_area(game, &plr);
+	ft_update_dmap(game, plr->i, plr->j);
 	ft_print_stats(game);
 }
 
-void	ft_move_p1_e(t_gobj *game)
+void	ft_move_plr_e(t_gobj *game, t_player *plr)
 {
 	int	speed;
 
-	speed = (int)(game->p1->spd + 1.0f);
+	speed = (int)(plr->spd + 1.0f);
 	while (--speed > 0)
 	{
-		if (is_valid_move(game, game->p1->i + speed, game->p1->j))
+		if (is_valid_move(game, plr->i + speed, plr->j))
 		{
-			game->p1->i += speed;
+			plr->i += speed;
 			break ;
 		}
 	}
-	game->p1->coin_count -= ft_collect(game, game->p1->i, game->p1->j);
-	game->p1->moves += speed;
-	ft_exit_area(game, &(game->p1));
-	ft_update_dmap(game, game->p1->i, game->p1->j);
+	if (plr->exit == 'E')
+		plr->coin_count -= ft_collect(game, plr->i, plr->j);
+	else
+		plr->coin_count -= ft_collect2(game, plr->i, plr->j);
+	plr->moves += speed;
+	ft_exit_area(game, &plr);
+	ft_update_dmap(game, plr->i, plr->j);
 	ft_print_stats(game);
 }

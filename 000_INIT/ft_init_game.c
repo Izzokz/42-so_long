@@ -32,6 +32,10 @@ static void	ft_set_keys_off(t_gobj *game)
 	game->keys_state[XK_a] = 0;
 	game->keys_state[XK_s] = 0;
 	game->keys_state[XK_d] = 0;
+	game->keys_state[XK_Up] = 0;
+	game->keys_state[XK_Down] = 0;
+	game->keys_state[XK_Right] = 0;
+	game->keys_state[XK_Left] = 0;
 }
 
 static void	ft_init_gobj(t_gobj *game, t_player *p1, t_player *p2)
@@ -59,11 +63,31 @@ static void	ft_init_gobj(t_gobj *game, t_player *p1, t_player *p2)
 	}
 }
 
+static void	exit_if_not_ber(t_gobj *game, char *map_name)
+{
+	int	len;
+
+	len = ft_strlen(map_name);
+	if (len <= 4 || map_name[len - 1] != 'r'
+		|| map_name[len - 2] != 'e' || map_name[len - 3] != 'b'
+		|| map_name[len - 4] != '.')
+	{
+		ft_printf("I do not think %s is a valid map name...\n", map_name);
+		if (game->stage > 0)
+		{
+			free(game->str.next_map);
+			game->str.next_map = NULL;
+		}
+		ft_end(game, 0);
+	}
+}
+
 int	ft_init_game(t_gobj *game, t_player *p1, t_player *p2, char *map_name)
 {
 	game->loaded = 0;
 	ft_set_keys_off(game);
 	ft_init_gobj(game, p1, p2);
+	exit_if_not_ber(game, map_name);
 	if (!game->imgs)
 		if (ft_init_imgs(game) == -1)
 			return (-1);
