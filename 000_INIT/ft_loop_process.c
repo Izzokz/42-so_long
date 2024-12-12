@@ -30,6 +30,8 @@ static int	all_processes(t_gobj *game)
 {
 	if (game->loaded)
 	{
+		ft_unlock_player(game, game->p1);
+		ft_unlock_player(game, game->p2);
 		ft_key_control(game);
 		is_complete(game);
 	}

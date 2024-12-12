@@ -60,13 +60,13 @@ void	ft_print_stats(t_gobj *game)
 	{
 		stat = get_stat(game, 1);
 		mlx_string_put(game->mlx, game->win, center_stat(*stat, game->p1->i),
-				game->p1->j - 4, 0x408A00, *stat);
+			game->p1->j - 4, 0x408A00, *stat);
 		refresh_stat(stat);
 	}
 	if (game->p2->finish != 0)
 		return ;
 	stat = get_stat(game, 3);
 	mlx_string_put(game->mlx, game->win, center_stat(*stat, game->p2->i),
-			game->p2->j - 4, 0x408A00, *stat);
+		game->p2->j - 4, 0x408A00, *stat);
 	refresh_stat(stat);
 }
