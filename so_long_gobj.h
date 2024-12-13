@@ -49,6 +49,7 @@ typedef struct s_gobj
 	void		*mlx;
 	void		*win;
 	void		**imgs;
+	void		*screen_form;
 	char		*current_map;
 	t_str		str;
 	void		*dmap;
@@ -61,6 +62,8 @@ typedef struct s_gobj
 	int			stage;
 	int			loaded;
 	int			retry;
+	int			win_i;
+	int			win_j;
 }		t_gobj;
 
 #endif

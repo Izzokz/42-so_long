@@ -50,6 +50,7 @@ void	ft_move_plr_e(t_gobj *game, t_player *plr);
 void	ft_set_players(t_gobj *game);
 int		ft_key_control(t_gobj *game);
 int		ft_loop_process(t_gobj *game);
+void	ft_screen_form(t_gobj *game);
 void	ft_copy_to_dmap(t_gobj *game, void *img, int i, int j);
 void	ft_print_doors(t_gobj *game);
 void	ft_print_entities(t_gobj *game);

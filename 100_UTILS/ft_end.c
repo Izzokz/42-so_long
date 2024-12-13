@@ -31,6 +31,8 @@ void	ft_end(t_gobj *game, int exit_id)
 	free(game->imgs);
 	if (game->dmap)
 		mlx_destroy_image(game->mlx, game->dmap);
+	if (game->screen_form)
+		mlx_destroy_image(game->mlx, game->screen_form);
 	if (game->win)
 		mlx_destroy_window(game->mlx, game->win);
 	ft_free_str(game->str);

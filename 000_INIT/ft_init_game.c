@@ -53,12 +53,12 @@ static void	ft_init_gobj(t_gobj *game, t_player *p1,
 		game->imgs = NULL;
 		game->dmap = NULL;
 		game->current_map = NULL;
+		game->screen_form = NULL;
+		mlx_get_screen_size(game->mlx, &(game->win_i), &(game->win_j));
 	}
 	else
 	{
 		mlx_destroy_image(game->mlx, game->dmap);
-		mlx_destroy_window(game->mlx, game->win);
-		game->win = NULL;
 		game->dmap = NULL;
 		free(game->current_map);
 		game->current_map = NULL;
