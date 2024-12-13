@@ -12,6 +12,12 @@
 
 #include "../so_long.h"
 
+static int	valid_remnant(char c)
+{
+	return (c != '0' && c != '1' && c != '!' && c != '?' && c != 'S'
+		&& c != '+' && c != '-');
+}
+
 static void	ft_flood_fill_p1(t_rlines *map, int i, int j)
 {
 	if ((*map)[i][j] == '1' || (*map)[i][j] == '+')
@@ -41,11 +47,8 @@ int	ft_playable_p1(t_rlines map, int i, int j)
 	{
 		t.y = -1;
 		while (temp[t.x][++(t.y)])
-			if (temp[t.x][t.y] != '0' && temp[t.x][t.y] != '1'
-				&& temp[t.x][t.y] != '$' && temp[t.x][t.y] != '+'
-				&& temp[t.x][t.y] != '-' && temp[t.x][t.y] != '@'
-				&& temp[t.x][t.y] != '#' && temp[t.x][t.y] != '!'
-				&& temp[t.x][t.y] != '?')
+			if (valid_remnant(temp[t.x][t.y]) && temp[t.x][t.y] != '$'
+				&& temp[t.x][t.y] != '@' && temp[t.x][t.y] != '#')
 				(t.count)++;
 	}
 	ft_free_rlines(&temp);
@@ -84,11 +87,8 @@ int	ft_playable_p2(t_rlines map, int i, int j)
 	{
 		t.y = -1;
 		while (temp[t.x][++(t.y)])
-			if (temp[t.x][t.y] != '0' && temp[t.x][t.y] != '1'
-				&& temp[t.x][t.y] != 'C' && temp[t.x][t.y] != '+'
-				&& temp[t.x][t.y] != '-' && temp[t.x][t.y] != 'P'
-				&& temp[t.x][t.y] != 'E' && temp[t.x][t.y] != '!'
-				&& temp[t.x][t.y] != '?')
+			if (valid_remnant(temp[t.x][t.y]) && temp[t.x][t.y] != 'C'
+				&& temp[t.x][t.y] != 'P' && temp[t.x][t.y] != 'E')
 				(t.count)++;
 	}
 	ft_free_rlines(&temp);

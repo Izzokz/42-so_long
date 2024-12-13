@@ -36,12 +36,15 @@ static void	ft_call_copy(t_gobj *game, int i, int j)
 		ft_copy_to_dmap(game, game->imgs[4], j * 32, i * 32);
 	if (game->str.map[i][j] == '+')
 		ft_copy_to_dmap(game, game->imgs[5], j * 32, i * 32);
-	if (game->str.map[i][j] == '-' || game->str.map[i][j] == '$')
+	if (game->str.map[i][j] == '-' || game->str.map[i][j] == '$'
+		|| game->str.map[i][j] == 'S')
 		ft_copy_to_dmap(game, game->imgs[6], j * 32, i * 32);
 	if (game->str.map[i][j] == '#')
 		ft_copy_to_dmap(game, game->imgs[8], j * 32, i * 32);
 	if (game->str.map[i][j] == '$')
 		ft_copy_to_dmap(game, game->imgs[9], j * 32 + 8, i * 32 + 8);
+	if (game->str.map[i][j] == 'S')
+		ft_copy_to_dmap(game, game->imgs[12], j * 32 + 8, i * 32 + 8);
 }
 
 void	ft_print_map(t_gobj *game)
@@ -61,6 +64,17 @@ void	ft_print_map(t_gobj *game)
 	mlx_put_image_to_window(game->mlx, game->win, game->dmap, 0, 0);
 }
 
+void	ft_update_tile(t_gobj *game, int i, int j)
+{
+	ft_call_copy(game, j, i);
+	ft_print_doors(game);
+	ft_print_entities(game);
+	mlx_put_image_to_window(game->mlx, game->win, game->dmap, 0, 0);
+}
+
+/*
+Updates 3x3 tiles from one position
+*/
 void	ft_update_dmap(t_gobj *game, int i, int j)
 {
 	ft_call_copy(game, j / 32, i / 32);
