@@ -25,7 +25,7 @@ int	is_complete(t_gobj *game)
 		ft_printf("%s%s\n", OWLINE, msg);
 		free(msg);
 		ft_printf("You completed the game in %i moves !\n", tot_mp);
-		ft_restart(game);
+		ft_restart(game, 0);
 	}
 	return (0);
 }

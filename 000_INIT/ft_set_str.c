@@ -44,19 +44,28 @@ int	ft_get_map_data(t_gobj *game, char *map_name)
 	return (0);
 }
 
-int	ft_set_str(t_gobj *game)
+int	ft_set_str(t_gobj *game, char *map_name)
 {
 	t_str	str;
 
-	str.map = NULL;
-	str.map_dep = NULL;
-	str.msg = ft_readfile_split("999_GOBJ/str/msg.txt", "***----***\n");
-	ft_slines_cutendl(&(str.msg));
-	if (!(str.msg))
+	if (game->stage == 0 && game->retry == 0)
 	{
-		ft_printf_err("A problem occured (ft_set_str.c:53)", 1);
+		str.map = NULL;
+		str.map_dep = NULL;
+		str.msg = ft_readfile_split("999_GOBJ/str/msg.txt", "***----***\n");
+		ft_slines_cutendl(&(str.msg));
+		if (!(str.msg))
+		{
+			ft_printf_err("A problem occured (ft_set_str.c:53)", 1);
+			return (-1);
+		}
+		game->str = str;
+	}
+	game->current_map = ft_strdup(map_name);
+	if (!(game->current_map))
+	{
+		ft_printf_err("A problem occured (ft_set_str.c:61)", 1);
 		return (-1);
 	}
-	game->str = str;
 	return (0);
 }

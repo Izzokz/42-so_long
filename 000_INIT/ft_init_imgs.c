@@ -35,7 +35,7 @@ static int	ft_load_img(t_gobj *game, char *filename)
 
 static int	ft_img_err(void)
 {
-	ft_printf("Missing image. Be sure to get all images installed.");
+	ft_printf("Missing image. Be sure to get all images installed.\n");
 	return (-1);
 }
 

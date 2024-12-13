@@ -36,21 +36,23 @@ static void	ft_set_keys_off(t_gobj *game)
 	game->keys_state[XK_Down] = 0;
 	game->keys_state[XK_Right] = 0;
 	game->keys_state[XK_Left] = 0;
+	game->keys_state[XK_Control_L] = 0;
+	game->keys_state[XK_r] = 0;
 }
 
-static void	ft_init_gobj(t_gobj *game, t_player *p1, t_player *p2)
+static void	ft_init_gobj(t_gobj *game, t_player *p1,
+	t_player *p2, char *map_name)
 {
 	ft_init_player(p1, 1);
 	ft_init_player(p2, 2);
-	if (game->stage == 0)
+	if (game->stage == 0 && game->retry == 0)
 	{
 		game->p1 = p1;
 		game->p2 = p2;
 		game->win = NULL;
 		game->imgs = NULL;
 		game->dmap = NULL;
-		if (ft_set_str(game) == -1)
-			ft_end(game, -1);
+		game->current_map = NULL;
 	}
 	else
 	{
@@ -58,9 +60,13 @@ static void	ft_init_gobj(t_gobj *game, t_player *p1, t_player *p2)
 		mlx_destroy_window(game->mlx, game->win);
 		game->win = NULL;
 		game->dmap = NULL;
+		free(game->current_map);
+		game->current_map = NULL;
 		ft_free_rlines(&(game->str.map));
 		ft_free_rlines(&(game->str.map_dep));
 	}
+	if (ft_set_str(game, map_name) == -1)
+		ft_end(game, -1);
 }
 
 static void	exit_if_not_ber(t_gobj *game, char *map_name)
@@ -86,7 +92,7 @@ int	ft_init_game(t_gobj *game, t_player *p1, t_player *p2, char *map_name)
 {
 	game->loaded = 0;
 	ft_set_keys_off(game);
-	ft_init_gobj(game, p1, p2);
+	ft_init_gobj(game, p1, p2, map_name);
 	exit_if_not_ber(game, map_name);
 	if (!game->imgs)
 		if (ft_init_imgs(game) == -1)
@@ -102,7 +108,7 @@ int	ft_init_game(t_gobj *game, t_player *p1, t_player *p2, char *map_name)
 	ft_loop_process(game);
 	ft_printf("Stage %d >>> %s\n", game->stage, map_name);
 	ft_print_stats(game);
-	if (game->stage > 0)
+	if (game->stage > 0 || game->retry > 0)
 	{
 		free(game->str.next_map);
 		game->str.next_map = NULL;

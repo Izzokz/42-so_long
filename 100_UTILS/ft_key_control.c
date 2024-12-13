@@ -37,6 +37,8 @@ int	ft_key_control(t_gobj *game)
 	{
 		moveable = !(game->p1->finish);
 		time_to_fps -= (1.0f / FPS);
+		if (game->keys_state[XK_Control_L] && game->keys_state[XK_r])
+			ft_restart(game, 1);
 		if (game->keys_state[XK_Escape])
 			ft_quit_game(game);
 		if (game->keys_state[XK_w] && !game->keys_state[XK_s] && moveable)

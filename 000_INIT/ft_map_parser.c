@@ -118,7 +118,7 @@ void	ft_map_parser(t_gobj *game, char *map_name)
 	ft_rlines_cutendl(&(game->str.map));
 	if (invalid_rlines(game->str.map) || !valid_map(game))
 	{
-		ft_printf("%s can't be done. Doucle check it.\n", map_name);
+		ft_printf("%s can't be done. Double check it.\n", map_name);
 		ft_end(game, -1);
 	}
 	ft_set_players(game);

@@ -44,6 +44,7 @@ int	main(int argc, char **argv)
 		return (-1);
 	}
 	game.stage = 0;
+	game.retry = 0;
 	ft_set_keys(&game);
 	if (ft_init_game(&game, &p1, &p2, argv[1]) == -1)
 		ft_end(&game, -1);

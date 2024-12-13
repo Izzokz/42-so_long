@@ -12,12 +12,21 @@
 
 #include "../so_long.h"
 
-void	ft_restart(t_gobj *game)
+void	ft_restart(t_gobj *game, int retry)
 {
-	game->stage += 1;
-	if (!(game->str.map_dep))
+	if (!(game->str.map_dep) && !retry)
 		ft_end(game, 0);
-	game->str.next_map = ft_str_random(game->str.map_dep);
+	if (!retry)
+	{
+		game->stage += 1;
+		game->str.next_map = ft_str_random(game->str.map_dep);
+	}
+	else
+	{
+		game->retry += 1;
+		game->str.next_map = ft_strdup(game->current_map);
+		ft_printf("Stucked ???\n");
+	}
 	if (!game->str.next_map)
 	{
 		ft_printf_err("Sorry, we encountered issue generating another map", 1);
