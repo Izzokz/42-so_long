@@ -16,7 +16,7 @@ static void	unicornize_screen(char *data, t_ints *d)
 {
 	int	r_mult;
 
-	r_mult = ft_random(3);
+	r_mult = ft_random(7);
 	d->i = -1;
 	while (++(d->i) < d->len)
 	{
