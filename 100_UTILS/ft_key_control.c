@@ -39,6 +39,8 @@ int	ft_key_control(t_gobj *game)
 		time_to_fps -= (1.0f / FPS);
 		if (game->keys_state[XK_Control_L] && game->keys_state[XK_r])
 			ft_restart(game, 1);
+		if (game->keys_state[XK_Control_R] && game->keys_state[XK_r])
+			ft_change_screen_form(game);
 		if (game->keys_state[XK_Escape])
 			ft_quit_game(game);
 		if (game->keys_state[XK_w] && !game->keys_state[XK_s] && moveable)

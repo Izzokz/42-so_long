@@ -37,6 +37,7 @@ static void	ft_set_keys_off(t_gobj *game)
 	game->keys_state[XK_Right] = 0;
 	game->keys_state[XK_Left] = 0;
 	game->keys_state[XK_Control_L] = 0;
+	game->keys_state[XK_Control_R] = 0;
 	game->keys_state[XK_r] = 0;
 }
 

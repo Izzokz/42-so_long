@@ -56,3 +56,14 @@ void	ft_screen_form(t_gobj *game)
 	d.height = game->win_j;
 	unicornize_screen(data, &d);
 }
+
+void	ft_change_screen_form(t_gobj *game)
+{
+	game->keys_state[XK_r] = 0;
+	mlx_destroy_image(game->mlx, game->screen_form);
+	game->screen_form = NULL;
+	ft_screen_form(game);
+	mlx_put_image_to_window(game->mlx, game->win, game->screen_form, 0, 0);
+	ft_print_map(game);
+	ft_print_stats(game);
+}
