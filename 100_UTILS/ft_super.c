@@ -83,9 +83,8 @@ void	ft_super(t_gobj *gm, t_player *plr)
 {
 	int	random_super;
 
-	if (gm->str.map[plr->j / 32][plr->i / 32] != 'S')
+	if (!ft_collect_super(gm, plr->i, plr->j))
 		return ;
-	gm->str.map[plr->j / 32][plr->i / 32] = '-';
 	random_super = ft_random(100);
 	if (random_super <= 50)
 		super_coin(gm, plr);

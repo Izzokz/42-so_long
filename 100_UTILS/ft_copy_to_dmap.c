@@ -48,3 +48,11 @@ void	ft_print_entities(t_gobj *game)
 	if (!game->p2->finish)
 		ft_copy_to_dmap(game, game->imgs[7], game->p2->i, game->p2->j);
 }
+
+int	ft_updated_window_re_print(t_gobj *game)
+{
+	mlx_put_image_to_window(game->mlx, game->win, game->screen_form, 0, 0);
+	mlx_put_image_to_window(game->mlx, game->win, game->dmap,
+		(game->win_i - game->width * 32) / 2, 0);
+	return (0);
+}

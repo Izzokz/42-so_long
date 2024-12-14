@@ -67,7 +67,7 @@ void	ft_print_map(t_gobj *game)
 
 void	ft_update_tile(t_gobj *game, int i, int j)
 {
-	ft_call_copy(game, j, i);
+	ft_call_copy(game, i, j);
 	ft_print_doors(game);
 	ft_print_entities(game);
 	mlx_put_image_to_window(game->mlx, game->win, game->dmap,
