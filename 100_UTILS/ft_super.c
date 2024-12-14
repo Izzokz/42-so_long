@@ -45,7 +45,7 @@ static int	try_remove_coin(t_gobj *gm, t_player *plr, int i, int j)
 		plr->coin_count -= ft_collect2(gm, j * 32, i * 32);
 	else
 		plr->coin_count -= ft_collect(gm, j * 32, i * 32);
-	ft_update_tile(gm, j, i);
+	ft_update_tile(gm, i, j);
 	return (1);
 }
 
