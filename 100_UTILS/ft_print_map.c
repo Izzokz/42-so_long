@@ -26,7 +26,8 @@ static void	ft_gen_dmap(t_gobj *game)
 
 static void	ft_call_copy(t_gobj *game, int i, int j)
 {
-	if (game->str.map[i][j] == '0' || game->str.map[i][j] == 'C')
+	if (game->str.map[i][j] == '0' || game->str.map[i][j] == 'C'
+		|| game->str.map[i][j] == 'K')
 		ft_copy_to_dmap(game, game->imgs[0], j * 32, i * 32);
 	if (game->str.map[i][j] == '1')
 		ft_copy_to_dmap(game, game->imgs[1], j * 32, i * 32);
@@ -45,6 +46,8 @@ static void	ft_call_copy(t_gobj *game, int i, int j)
 		ft_copy_to_dmap(game, game->imgs[9], j * 32 + 8, i * 32 + 8);
 	if (game->str.map[i][j] == 'S')
 		ft_copy_to_dmap(game, game->imgs[12], j * 32 + 8, i * 32 + 8);
+	if (game->str.map[i][j] == 'K')
+		ft_copy_to_dmap(game, game->imgs[13], j * 32 + 8, i * 32 + 8);
 }
 
 void	ft_print_map(t_gobj *game)

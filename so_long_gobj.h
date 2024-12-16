@@ -64,6 +64,7 @@ typedef struct s_gobj
 	int			retry;
 	int			win_i;
 	int			win_j;
+	int			keys;
 }		t_gobj;
 
 #endif

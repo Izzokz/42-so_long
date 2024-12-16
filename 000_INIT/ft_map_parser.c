@@ -126,4 +126,5 @@ void	ft_map_parser(t_gobj *game, char *map_name)
 	game->p1->coin_count = ft_count_coins(game, 'C');
 	if (game->p2->finish == 0)
 		game->p2->coin_count = ft_count_coins(game, '$');
+	game->keys = 0;
 }

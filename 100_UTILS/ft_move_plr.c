@@ -12,26 +12,26 @@
 
 #include "../so_long.h"
 
-int	is_valid_move(t_gobj *game, int pi, int pj)
+int	is_valid_move(t_gobj *gm, int pi, int pj)
 {
-	return (game->str.map[pj / 32][pi / 32] != '1'
-		&& game->str.map[(pj + 15) / 32][pi / 32] != '1'
-		&& game->str.map[pj / 32][(pi + 15) / 32] != '1'
-		&& game->str.map[(pj + 15) / 32][(pi + 15) / 32] != '1'
-		&& game->str.map[pj / 32][pi / 32] != '+'
-		&& game->str.map[(pj + 15) / 32][pi / 32] != '+'
-		&& game->str.map[pj / 32][(pi + 15) / 32] != '+'
-		&& game->str.map[(pj + 15) / 32][(pi + 15) / 32] != '+'
-		&& ((game->str.map[pj / 32][pi / 32] != '!'
-		&& game->str.map[(pj + 15) / 32][pi / 32] != '!'
-		&& game->str.map[pj / 32][(pi + 15) / 32] != '!'
-		&& game->str.map[(pj + 15) / 32][(pi + 15) / 32] != '!')
-		|| (game->p1->coin_count + game->p2->coin_count) % 2 == 0)
-		&& ((game->str.map[pj / 32][pi / 32] != '?'
-		&& game->str.map[(pj + 15) / 32][pi / 32] != '?'
-		&& game->str.map[pj / 32][(pi + 15) / 32] != '?'
-		&& game->str.map[(pj + 15) / 32][(pi + 15) / 32] != '?')
-		|| (game->p1->coin_count + game->p2->coin_count) % 2));
+	return (gm->str.map[pj / 32][pi / 32] != '1'
+		&& gm->str.map[(pj + 15) / 32][pi / 32] != '1'
+		&& gm->str.map[pj / 32][(pi + 15) / 32] != '1'
+		&& gm->str.map[(pj + 15) / 32][(pi + 15) / 32] != '1'
+		&& gm->str.map[pj / 32][pi / 32] != '+'
+		&& gm->str.map[(pj + 15) / 32][pi / 32] != '+'
+		&& gm->str.map[pj / 32][(pi + 15) / 32] != '+'
+		&& gm->str.map[(pj + 15) / 32][(pi + 15) / 32] != '+'
+		&& ((gm->str.map[pj / 32][pi / 32] != '!'
+		&& gm->str.map[(pj + 15) / 32][pi / 32] != '!'
+		&& gm->str.map[pj / 32][(pi + 15) / 32] != '!'
+		&& gm->str.map[(pj + 15) / 32][(pi + 15) / 32] != '!')
+		|| (gm->p1->coin_count + gm->p2->coin_count + gm->keys) % 2 == 0)
+		&& ((gm->str.map[pj / 32][pi / 32] != '?'
+		&& gm->str.map[(pj + 15) / 32][pi / 32] != '?'
+		&& gm->str.map[pj / 32][(pi + 15) / 32] != '?'
+		&& gm->str.map[(pj + 15) / 32][(pi + 15) / 32] != '?')
+		|| (gm->p1->coin_count + gm->p2->coin_count + gm->keys) % 2));
 }
 
 void	ft_move_plr_n(t_gobj *game, t_player *plr)
@@ -53,6 +53,7 @@ void	ft_move_plr_n(t_gobj *game, t_player *plr)
 		plr->coin_count -= ft_collect2(game, plr->i, plr->j);
 	ft_super(game, plr);
 	plr->moves += speed;
+	game->keys += ft_collect_key(game, plr->i, plr->j);
 	ft_exit_area(game, &plr);
 	ft_update_dmap(game, plr->i, plr->j);
 	ft_print_stats(game);
@@ -77,6 +78,7 @@ void	ft_move_plr_s(t_gobj *game, t_player *plr)
 		plr->coin_count -= ft_collect2(game, plr->i, plr->j);
 	ft_super(game, plr);
 	plr->moves += speed;
+	game->keys += ft_collect_key(game, plr->i, plr->j);
 	ft_exit_area(game, &plr);
 	ft_update_dmap(game, plr->i, plr->j);
 	ft_print_stats(game);
@@ -101,6 +103,7 @@ void	ft_move_plr_w(t_gobj *game, t_player *plr)
 		plr->coin_count -= ft_collect2(game, plr->i, plr->j);
 	ft_super(game, plr);
 	plr->moves += speed;
+	game->keys += ft_collect_key(game, plr->i, plr->j);
 	ft_exit_area(game, &plr);
 	ft_update_dmap(game, plr->i, plr->j);
 	ft_print_stats(game);
@@ -125,6 +128,7 @@ void	ft_move_plr_e(t_gobj *game, t_player *plr)
 		plr->coin_count -= ft_collect2(game, plr->i, plr->j);
 	ft_super(game, plr);
 	plr->moves += speed;
+	game->keys += ft_collect_key(game, plr->i, plr->j);
 	ft_exit_area(game, &plr);
 	ft_update_dmap(game, plr->i, plr->j);
 	ft_print_stats(game);

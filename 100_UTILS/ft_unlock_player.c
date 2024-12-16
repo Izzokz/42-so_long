@@ -13,18 +13,18 @@
 #include "../so_long.h"
 #include <math.h>
 
-static int	not_locked(t_gobj *game, int pi, int pj)
+static int	not_locked(t_gobj *gm, int pi, int pj)
 {
-	return (((game->str.map[pj / 32][pi / 32] != '!'
-			&& game->str.map[(pj + 15) / 32][pi / 32] != '!'
-		&& game->str.map[pj / 32][(pi + 15) / 32] != '!'
-		&& game->str.map[(pj + 15) / 32][(pi + 15) / 32] != '!')
-		|| (game->p1->coin_count + game->p2->coin_count) % 2 == 0)
-		&& ((game->str.map[pj / 32][pi / 32] != '?'
-		&& game->str.map[(pj + 15) / 32][pi / 32] != '?'
-		&& game->str.map[pj / 32][(pi + 15) / 32] != '?'
-		&& game->str.map[(pj + 15) / 32][(pi + 15) / 32] != '?')
-		|| (game->p1->coin_count + game->p2->coin_count) % 2));
+	return (((gm->str.map[pj / 32][pi / 32] != '!'
+			&& gm->str.map[(pj + 15) / 32][pi / 32] != '!'
+		&& gm->str.map[pj / 32][(pi + 15) / 32] != '!'
+		&& gm->str.map[(pj + 15) / 32][(pi + 15) / 32] != '!')
+		|| (gm->p1->coin_count + gm->p2->coin_count + gm->keys) % 2 == 0)
+		&& ((gm->str.map[pj / 32][pi / 32] != '?'
+		&& gm->str.map[(pj + 15) / 32][pi / 32] != '?'
+		&& gm->str.map[pj / 32][(pi + 15) / 32] != '?'
+		&& gm->str.map[(pj + 15) / 32][(pi + 15) / 32] != '?')
+		|| (gm->p1->coin_count + gm->p2->coin_count + gm->keys) % 2));
 }
 
 static void	get_safe_pos2(t_gobj *gm, t_player *plr, char direc)
@@ -78,5 +78,5 @@ void	ft_unlock_player(t_gobj *game, t_player *plr)
 		return (get_safe_pos(game, plr, 's'));
 	if (is_valid_move(game, plr->i - 32, plr->j))
 		return (get_safe_pos(game, plr, 'w'));
-	return (get_safe_pos(game, plr, 'w'));
+	return (get_safe_pos(game, plr, 'e'));
 }

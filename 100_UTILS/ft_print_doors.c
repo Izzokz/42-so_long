@@ -14,7 +14,7 @@
 
 static void	ft_print_odd_door(t_gobj *game, int i, int j)
 {
-	if ((game->p1->coin_count + game->p2->coin_count) % 2)
+	if ((game->p1->coin_count + game->p2->coin_count + game->keys) % 2)
 		ft_copy_to_dmap(game, game->imgs[6], j * 32, i * 32);
 	else
 		ft_copy_to_dmap(game, game->imgs[11], j * 32, i * 32);
@@ -22,7 +22,7 @@ static void	ft_print_odd_door(t_gobj *game, int i, int j)
 
 static void	ft_print_even_door(t_gobj *game, int i, int j)
 {
-	if ((game->p1->coin_count + game->p2->coin_count) % 2 == 0)
+	if ((game->p1->coin_count + game->p2->coin_count + game->keys) % 2 == 0)
 		ft_copy_to_dmap(game, game->imgs[0], j * 32, i * 32);
 	else
 		ft_copy_to_dmap(game, game->imgs[10], j * 32, i * 32);

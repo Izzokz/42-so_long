@@ -42,6 +42,7 @@ int		ft_count_coins(t_gobj *game, char coin_id);
 int		ft_collect(t_gobj *game, int pi, int pj);
 int		ft_collect2(t_gobj *game, int pi, int pj);
 int		ft_collect_super(t_gobj *game, int pi, int pj);
+int		ft_collect_key(t_gobj *game, int pi, int pj);
 void	ft_super(t_gobj *gm, t_player *plr);
 void	ft_unlock_player(t_gobj *game, t_player *plr);
 void	ft_move_plr_n(t_gobj *game, t_player *plr);
