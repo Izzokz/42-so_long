@@ -36,6 +36,15 @@ typedef struct s_player
 	char	exit;
 }		t_player;
 
+typedef struct s_enemy
+{
+	int		active;
+	int		i;
+	int		j;
+	float	spd;
+	char	type;
+}		t_enemy;
+
 typedef struct s_str
 {
 	t_slines	msg;
@@ -55,6 +64,7 @@ typedef struct s_gobj
 	void		*dmap;
 	t_player	*p1;
 	t_player	*p2;
+	t_enemy		**enemies;
 	int			height;
 	int			width;
 	int			keys_state[131072];

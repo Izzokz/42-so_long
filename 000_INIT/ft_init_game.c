@@ -46,6 +46,7 @@ static void	ft_init_gobj(t_gobj *game, t_player *p1,
 {
 	ft_init_player(p1, 1);
 	ft_init_player(p2, 2);
+	game->enemies = NULL;
 	if (game->stage == 0 && game->retry == 0)
 	{
 		game->p1 = p1;

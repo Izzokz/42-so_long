@@ -19,6 +19,22 @@ static void	ft_free_str(t_str str)
 	ft_free_slines(&(str.msg));
 }
 
+void	ft_free_enemies(t_enemy ***enemies)
+{
+	int	i;
+
+	if (!enemies || !(*enemies))
+		return ;
+	i = -1;
+	while ((*enemies)[++i])
+	{
+		free((*enemies)[i]);
+		(*enemies)[i] = NULL;
+	}
+	free(*enemies);
+	*enemies = NULL;
+}
+
 void	ft_end(t_gobj *game, int exit_id)
 {
 	int		i;
@@ -29,6 +45,7 @@ void	ft_end(t_gobj *game, int exit_id)
 	while (game->imgs && game->imgs[++i])
 		mlx_destroy_image(game->mlx, game->imgs[i]);
 	free(game->imgs);
+	ft_free_enemies(&(game->enemies));
 	if (game->dmap)
 		mlx_destroy_image(game->mlx, game->dmap);
 	if (game->screen_form)

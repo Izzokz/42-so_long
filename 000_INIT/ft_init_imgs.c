@@ -55,6 +55,8 @@ static int	ft_init_imgs2(t_gobj *game, int count)
 		return (ft_img_err());
 	if (!ft_load_img(game, "key.xpm"))
 		return (ft_img_err());
+	if (!ft_load_img(game, "qark.xpm"))
+		return (ft_img_err());
 	return (count);
 }
 
@@ -62,7 +64,7 @@ int	ft_init_imgs(t_gobj *game)
 {
 	int	count;
 
-	count = 14;
+	count = 15;
 	game->imgs = ft_calloc(count + 1, sizeof(void *));
 	if (!game->imgs)
 		return (-1);

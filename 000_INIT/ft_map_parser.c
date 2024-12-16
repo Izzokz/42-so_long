@@ -121,6 +121,7 @@ void	ft_map_parser(t_gobj *game, char *map_name)
 		ft_end(game, -1);
 	}
 	ft_set_players(game);
+	ft_set_enemies(game);
 	game->height = ft_rlines_len(game->str.map);
 	game->width = ft_strlen(game->str.map[0]);
 	game->p1->coin_count = ft_count_coins(game, 'C');

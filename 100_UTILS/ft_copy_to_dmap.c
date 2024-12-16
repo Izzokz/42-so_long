@@ -43,10 +43,18 @@ void	ft_copy_to_dmap(t_gobj *game, void *img, int i, int j)
 
 void	ft_print_entities(t_gobj *game)
 {
+	int	i;
+
 	if (!game->p1->finish)
 		ft_copy_to_dmap(game, game->imgs[2], game->p1->i, game->p1->j);
 	if (!game->p2->finish)
 		ft_copy_to_dmap(game, game->imgs[7], game->p2->i, game->p2->j);
+	if (!game->enemies)
+		return ;
+	i = -1;
+	while (game->enemies[++i])
+		ft_copy_to_dmap(game, game->imgs[14],
+			game->enemies[i]->i, game->enemies[i]->j);
 }
 
 int	ft_updated_window_re_print(t_gobj *game)
