@@ -50,6 +50,7 @@ void	ft_move_plr_n(t_gobj *game, t_player *plr);
 void	ft_move_plr_s(t_gobj *game, t_player *plr);
 void	ft_move_plr_w(t_gobj *game, t_player *plr);
 void	ft_move_plr_e(t_gobj *game, t_player *plr);
+void	ft_paint_floor(t_gobj *game, t_player *plr);
 int		ft_move_enemies(t_gobj *game);
 void	ft_set_players(t_gobj *game);
 void	ft_set_enemies(t_gobj *game);
