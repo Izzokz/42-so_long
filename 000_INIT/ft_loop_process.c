@@ -32,7 +32,6 @@ static int	all_processes(t_gobj *game)
 	{
 		ft_unlock_player(game, game->p1);
 		ft_unlock_player(game, game->p2);
-		ft_move_enemies(game);
 		ft_key_control(game);
 		is_complete(game);
 	}

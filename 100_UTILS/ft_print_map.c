@@ -66,6 +66,7 @@ void	ft_print_map(t_gobj *game)
 	ft_print_entities(game);
 	mlx_put_image_to_window(game->mlx, game->win, game->dmap,
 		(game->win_i - game->width * 32) / 2, 0);
+	ft_print_stats(game);
 }
 
 void	ft_update_tile(t_gobj *game, int i, int j)
@@ -75,6 +76,7 @@ void	ft_update_tile(t_gobj *game, int i, int j)
 	ft_print_entities(game);
 	mlx_put_image_to_window(game->mlx, game->win, game->dmap,
 		(game->win_i - game->width * 32) / 2, 0);
+	ft_print_stats(game);
 }
 
 /*
@@ -95,4 +97,5 @@ void	ft_update_dmap(t_gobj *game, int i, int j)
 	ft_print_entities(game);
 	mlx_put_image_to_window(game->mlx, game->win, game->dmap,
 		(game->win_i - game->width * 32) / 2, 0);
+	ft_print_stats(game);
 }

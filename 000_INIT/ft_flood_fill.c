@@ -15,12 +15,12 @@
 static int	valid_remnant(char c)
 {
 	return (c != '0' && c != '1' && c != '!' && c != '?' && c != 'S'
-		&& c != '+' && c != '-' && c != 'K' && c != 'Q');
+		&& c != '+' && c != '-' && c != 'K' && c != 'Q' && c != 'q');
 }
 
 static void	ft_flood_fill_p1(t_rlines *map, int i, int j)
 {
-	if ((*map)[i][j] == '1' || (*map)[i][j] == '+')
+	if ((*map)[i][j] == '1' || (*map)[i][j] == '+' || (*map)[i][j] == 'q')
 		return ;
 	(*map)[i][j] = '1';
 	ft_flood_fill_p1(map, i + 1, j);
@@ -57,7 +57,7 @@ int	ft_playable_p1(t_rlines map, int i, int j)
 
 static void	ft_flood_fill_p2(t_rlines *map, int i, int j)
 {
-	if ((*map)[i][j] == '1' || (*map)[i][j] == '+')
+	if ((*map)[i][j] == '1' || (*map)[i][j] == '+' || (*map)[i][j] == 'q')
 		return ;
 	(*map)[i][j] = '1';
 	ft_flood_fill_p2(map, i + 1, j);

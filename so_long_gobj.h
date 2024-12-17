@@ -29,7 +29,7 @@ typedef struct s_player
 {
 	int		moves;
 	int		finish;
-	float	spd;
+	int		spd;
 	int		i;
 	int		j;
 	int		coin_count;
@@ -41,7 +41,8 @@ typedef struct s_enemy
 	int		active;
 	int		i;
 	int		j;
-	float	spd;
+	int		spd;
+	int		q_pass;
 	char	type;
 }		t_enemy;
 

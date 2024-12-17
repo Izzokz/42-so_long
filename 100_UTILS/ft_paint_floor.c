@@ -12,22 +12,22 @@
 
 #include "../so_long.h"
 
-void	ft_paint_floor(t_gobj *game, t_player *plr)
+void	ft_paint_floor(t_gobj *g, t_player *p)
 {
-	if (game->str.map[plr->j / 32][plr->i / 32] == '0' && plr->exit == '#')
-		game->str.map[plr->j / 32][plr->i / 32] = '-';
-	if (game->str.map[(plr->j + 15) / 32][plr->i / 32] == '0' && plr->exit == '#')
-		game->str.map[(plr->j + 15) / 32][plr->i / 32] = '-';
-	if (game->str.map[plr->j / 32][(plr->i + 15) / 32] == '0' && plr->exit == '#')
-		game->str.map[plr->j / 32][(plr->i + 15) / 32] = '-';
-	if (game->str.map[(plr->j + 15) / 32][(plr->i + 15) / 32] == '0' && plr->exit == '#')
-		game->str.map[(plr->j + 15) / 32][(plr->i + 15) / 32] = '-';
-	if (game->str.map[plr->j / 32][plr->i / 32] == '-' && plr->exit == 'E')
-		game->str.map[plr->j / 32][plr->i / 32] = '0';
-	if (game->str.map[(plr->j + 15) / 32][plr->i / 32] == '-' && plr->exit == 'E')
-		game->str.map[(plr->j + 15) / 32][plr->i / 32] = '0';
-	if (game->str.map[plr->j / 32][(plr->i + 15) / 32] == '-' && plr->exit == 'E')
-		game->str.map[plr->j / 32][(plr->i + 15) / 32] = '0';
-	if (game->str.map[(plr->j + 15) / 32][(plr->i + 15) / 32] == '-' && plr->exit == 'E')
-		game->str.map[(plr->j + 15) / 32][(plr->i + 15) / 32] = '0';
+	if (g->str.map[p->j / 32][p->i / 32] == '0' && p->exit == '#')
+		g->str.map[p->j / 32][p->i / 32] = '-';
+	if (g->str.map[(p->j + 15) / 32][p->i / 32] == '0' && p->exit == '#')
+		g->str.map[(p->j + 15) / 32][p->i / 32] = '-';
+	if (g->str.map[p->j / 32][(p->i + 15) / 32] == '0' && p->exit == '#')
+		g->str.map[p->j / 32][(p->i + 15) / 32] = '-';
+	if (g->str.map[(p->j + 15) / 32][(p->i + 15) / 32] == '0' && p->exit == '#')
+		g->str.map[(p->j + 15) / 32][(p->i + 15) / 32] = '-';
+	if (g->str.map[p->j / 32][p->i / 32] == '-' && p->exit == 'E')
+		g->str.map[p->j / 32][p->i / 32] = '0';
+	if (g->str.map[(p->j + 15) / 32][p->i / 32] == '-' && p->exit == 'E')
+		g->str.map[(p->j + 15) / 32][p->i / 32] = '0';
+	if (g->str.map[p->j / 32][(p->i + 15) / 32] == '-' && p->exit == 'E')
+		g->str.map[p->j / 32][(p->i + 15) / 32] = '0';
+	if (g->str.map[(p->j + 15) / 32][(p->i + 15) / 32] == '-' && p->exit == 'E')
+		g->str.map[(p->j + 15) / 32][(p->i + 15) / 32] = '0';
 }

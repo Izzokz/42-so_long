@@ -109,7 +109,6 @@ int	ft_init_game(t_gobj *game, t_player *p1, t_player *p2, char *map_name)
 	ft_print_map(game);
 	ft_loop_process(game);
 	ft_printf("|- Stage %d >>> %s -|\n", game->stage, map_name);
-	ft_print_stats(game);
 	if (game->stage > 0 || game->retry > 0)
 	{
 		free(game->str.next_map);

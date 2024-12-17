@@ -25,6 +25,7 @@ static void	ft_key_control2(t_gobj *game)
 		ft_move_plr_e(game, game->p2);
 	if (game->keys_state[XK_Down] && !game->keys_state[XK_Up] && moveable)
 		ft_move_plr_s(game, game->p2);
+	ft_move_enemies(game);
 }
 
 int	ft_key_control(t_gobj *game)

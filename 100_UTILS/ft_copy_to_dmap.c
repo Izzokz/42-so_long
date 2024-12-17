@@ -41,6 +41,16 @@ void	ft_copy_to_dmap(t_gobj *game, void *img, int i, int j)
 	}
 }
 
+static void	ft_print_enemy(t_gobj *game, t_enemy *ene)
+{
+	if (ene->type == 'Q')
+		ft_copy_to_dmap(game, game->imgs[14], ene->i, ene->j);
+	if (ene->type == 'M')
+		ft_copy_to_dmap(game, game->imgs[15], ene->i, ene->j);
+	if (ene->type == 'q')
+		ft_copy_to_dmap(game, game->imgs[16], ene->i, ene->j);
+}
+
 void	ft_print_entities(t_gobj *game)
 {
 	int	i;
@@ -53,8 +63,7 @@ void	ft_print_entities(t_gobj *game)
 		return ;
 	i = -1;
 	while (game->enemies[++i])
-		ft_copy_to_dmap(game, game->imgs[14],
-			game->enemies[i]->i, game->enemies[i]->j);
+		ft_print_enemy(game, game->enemies[i]);
 }
 
 int	ft_updated_window_re_print(t_gobj *game)
