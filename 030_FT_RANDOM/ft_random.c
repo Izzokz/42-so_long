@@ -27,6 +27,18 @@ int	ft_random(int max)
 	return ((seed.tv_nsec % max) + 1);
 }
 
+void	*ft_ptr_random(void **chain)
+{
+	int		len;
+
+	len = 0;
+	while (chain[len])
+		len++;
+	if (len == 0)
+		return (NULL);
+	return (chain[ft_random(len) - 1]);
+}
+
 char	*ft_str_random(char **chain)
 {
 	int		len;

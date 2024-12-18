@@ -19,19 +19,22 @@ static int	is_lowercase(char c)
 
 static void	ft_swap(t_gobj *game, t_enemy *ene)
 {
-	int	i;
-	int	tmp_i;
-	int	tmp_j;
+	t_enemy	*random_ene;
+	int		tmp_i;
+	int		tmp_j;
+	int		i;
 
-	i = -1;
-	while (game->enemies[++i])
+	i = 7;
+	while (--i)
 	{
-		if (is_lowercase(game->enemies[i]->type))
+		random_ene = (t_enemy *)ft_ptr_random((void **)game->enemies);
+		if (is_lowercase(random_ene->type)
+			&& is_valid_move(game, random_ene->i, random_ene->j))
 		{
-			tmp_i = game->enemies[i]->i;
-			tmp_j = game->enemies[i]->j;
-			game->enemies[i]->i = ene->i;
-			game->enemies[i]->j = ene->j;
+			tmp_i = random_ene->i;
+			tmp_j = random_ene->j;
+			random_ene->i = ene->i;
+			random_ene->j = ene->j;
 			ene->i = tmp_i;
 			ene->j = tmp_j;
 			break ;

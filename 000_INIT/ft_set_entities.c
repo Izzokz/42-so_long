@@ -102,7 +102,7 @@ void	ft_set_enemies(t_gobj *game)
 			if (game->str.map[i.x][i.y] == 'H')
 				ft_create_enemy(game, 'H', i.x, i.y);
 			if (game->str.map[i.x][i.y] == 'h')
-				ft_create_enemy(game, 'H', i.x, i.y);
+				ft_create_enemy(game, 'h', i.x, i.y);
 		}
 	}
 }

@@ -14,6 +14,7 @@
 # define FT_RANDOM_H
 
 int		ft_random(int max);
+void	*ft_ptr_random(void **chain);
 char	*ft_str_random(char **chain);
 
 #endif
