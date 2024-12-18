@@ -12,6 +12,21 @@
 
 #include "../so_long.h"
 
+static void	ft_copy_pixel(t_gobj *game, unsigned int *from, unsigned int *to)
+{
+	unsigned int	r;
+	unsigned int	g;
+	unsigned int	b;
+
+	r = ((*from >> 16) & 0xFF) * game->brn;
+	g = ((*from >> 8) & 0xFF) * game->brn;
+	b = (*from & 0xFF) * game->brn;
+	r = r | ((255 - r) >> 31);
+	g = g | ((255 - g) >> 31);
+	b = b | ((255 - b) >> 31);
+	*to = ((*from & 0xFF000000) | (r << 16) | (g << 8) | b) * game->theme;
+}
+
 void	ft_copy_to_dmap(t_gobj *game, void *img, int i, int j)
 {
 	t_ints	d;
@@ -35,8 +50,8 @@ void	ft_copy_to_dmap(t_gobj *game, void *img, int i, int j)
 			d.k = (d.y * d.len) + (d.x * d.count / 8);
 			d.j = ((d.y - j) * d.len1) + ((d.x - i) * d.count1 / 8);
 			if (!((*(unsigned int *)(data + d.j) & 0xFFFFFF) == 0x000000))
-				*(unsigned int *)(dmap_data + d.k)
-					= *(unsigned int *)(data + d.j) * game->brn;
+				ft_copy_pixel(game, (unsigned int *)(data + d.j),
+					(unsigned int *)(dmap_data + d.k));
 		}
 	}
 }

@@ -12,7 +12,22 @@
 
 #include "../so_long.h"
 
-static void	unicornize_screen(char *data, t_ints *d)
+static void	ft_copy_pixel(t_gobj *game, unsigned int from, unsigned int *to)
+{
+	unsigned int	r;
+	unsigned int	g;
+	unsigned int	b;
+
+	r = ((from >> 16) & 0xFF) * game->brn;
+	g = ((from >> 8) & 0xFF) * game->brn;
+	b = (from & 0xFF) * game->brn;
+	r = r | ((255 - r) >> 31);
+	g = g | ((255 - g) >> 31);
+	b = b | ((255 - b) >> 31);
+	*to = ((from & 0xFF000000) | (r << 16) | (g << 8) | b) * game->theme;
+}
+
+static void	unicornize_screen(t_gobj *game, char *data, t_ints *d)
 {
 	int	r_mult;
 
@@ -25,11 +40,14 @@ static void	unicornize_screen(char *data, t_ints *d)
 		{
 			d->k = (d->j * d->len) + (d->i * d->count / 8);
 			if (d->j % 9 < 3 && d->j != 0)
-				*(unsigned int *)(data + d->k) = 0xFFFFFF * r_mult;
+				ft_copy_pixel(game, 0xFFFFFF * r_mult,
+					(unsigned int *)(data + d->k));
 			else if (d->j % 9 < 6 && d->j != 0)
-				*(unsigned int *)(data + d->k) = 0xa3e8ff * r_mult;
+				ft_copy_pixel(game, 0xA3E8FF * r_mult,
+					(unsigned int *)(data + d->k));
 			else
-				*(unsigned int *)(data + d->k) = 0xa3ffbc * r_mult;
+				ft_copy_pixel(game, 0xA3FFBC * r_mult,
+					(unsigned int *)(data + d->k));
 		}
 	}
 }
@@ -54,7 +72,7 @@ void	ft_screen_form(t_gobj *game)
 		ft_end(game, -1);
 	}
 	d.height = game->win_j;
-	unicornize_screen(data, &d);
+	unicornize_screen(game, data, &d);
 }
 
 void	ft_change_screen_form(t_gobj *game)

@@ -12,33 +12,68 @@
 
 #include "../so_long.h"
 
+static void	ft_refresh_window(t_gobj *game)
+{
+	ft_change_screen_form(game);
+	ft_print_map(game);
+}
+
 static void	ft_brightness(t_gobj *game)
 {
 	float	tmp;
 
 	tmp = game->brn;
-	if (game->keys_state[XK_Control_R] && game->keys_state[XK_0])
+	if (game->keys_state[XK_Control_L] && game->keys_state[XK_0])
 		game->brn = 1.0f;
-	if (game->keys_state[XK_Control_R] && game->keys_state[XK_1])
+	if (game->keys_state[XK_Control_L] && game->keys_state[XK_1])
 		game->brn = 0.1f;
-	if (game->keys_state[XK_Control_R] && game->keys_state[XK_2])
+	if (game->keys_state[XK_Control_L] && game->keys_state[XK_2])
 		game->brn = 0.2f;
-	if (game->keys_state[XK_Control_R] && game->keys_state[XK_3])
+	if (game->keys_state[XK_Control_L] && game->keys_state[XK_3])
 		game->brn = 0.3f;
-	if (game->keys_state[XK_Control_R] && game->keys_state[XK_4])
+	if (game->keys_state[XK_Control_L] && game->keys_state[XK_4])
 		game->brn = 0.4f;
-	if (game->keys_state[XK_Control_R] && game->keys_state[XK_5])
+	if (game->keys_state[XK_Control_L] && game->keys_state[XK_5])
 		game->brn = 0.5f;
-	if (game->keys_state[XK_Control_R] && game->keys_state[XK_6])
+	if (game->keys_state[XK_Control_L] && game->keys_state[XK_6])
 		game->brn = 0.6f;
-	if (game->keys_state[XK_Control_R] && game->keys_state[XK_7])
+	if (game->keys_state[XK_Control_L] && game->keys_state[XK_7])
 		game->brn = 0.7f;
-	if (game->keys_state[XK_Control_R] && game->keys_state[XK_8])
+	if (game->keys_state[XK_Control_L] && game->keys_state[XK_8])
 		game->brn = 0.8f;
-	if (game->keys_state[XK_Control_R] && game->keys_state[XK_9])
+	if (game->keys_state[XK_Control_L] && game->keys_state[XK_9])
 		game->brn = 0.9f;
 	if (game->brn != tmp)
-		ft_print_map(game);
+		ft_refresh_window(game);
+}
+
+static void	ft_theme(t_gobj *game)
+{
+	float	tmp;
+
+	tmp = game->theme;
+	if (game->keys_state[XK_Control_R] && game->keys_state[XK_0])
+		game->theme = 1.0f;
+	if (game->keys_state[XK_Control_R] && game->keys_state[XK_1])
+		game->theme = 0.1f;
+	if (game->keys_state[XK_Control_R] && game->keys_state[XK_2])
+		game->theme = 0.2f;
+	if (game->keys_state[XK_Control_R] && game->keys_state[XK_3])
+		game->theme = 0.3f;
+	if (game->keys_state[XK_Control_R] && game->keys_state[XK_4])
+		game->theme = 0.4f;
+	if (game->keys_state[XK_Control_R] && game->keys_state[XK_5])
+		game->theme = 0.5f;
+	if (game->keys_state[XK_Control_R] && game->keys_state[XK_6])
+		game->theme = 0.6f;
+	if (game->keys_state[XK_Control_R] && game->keys_state[XK_7])
+		game->theme = 0.7f;
+	if (game->keys_state[XK_Control_R] && game->keys_state[XK_8])
+		game->theme = 0.8f;
+	if (game->keys_state[XK_Control_R] && game->keys_state[XK_9])
+		game->theme = 0.9f;
+	if (game->theme != tmp)
+		ft_refresh_window(game);
 }
 
 static void	ft_key_control2(t_gobj *game)
@@ -56,6 +91,7 @@ static void	ft_key_control2(t_gobj *game)
 		ft_move_plr_s(game, game->p2);
 	ft_move_enemies(game);
 	ft_brightness(game);
+	ft_theme(game);
 }
 
 int	ft_key_control(t_gobj *game)

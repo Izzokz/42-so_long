@@ -77,6 +77,7 @@ typedef struct s_gobj
 	int			win_i;
 	int			win_j;
 	int			keys;
+	float		theme;
 	float		brn; // brightness
 }		t_gobj;
 
