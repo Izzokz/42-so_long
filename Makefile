@@ -8,7 +8,7 @@ INITSRC = main.c ft_init_imgs.c ft_map_parser.c \
 	ft_loop_process.c ft_count_coins.c \
 	ft_set_str.c ft_init_game.c ft_init_window.c \
 	is_valid_char.c ft_flood_fill.c ft_set_entities.c \
-	ft_init_ene_stats.c
+	ft_init_ene_stats.c ft_set_rules.c
 UTILSRC = ft_end.c ft_key_control.c ft_print_map.c \
 	ft_move_plr.c ft_delta_time.c ft_super.c \
 	ft_collect.c ft_exit_area.c is_complete.c \

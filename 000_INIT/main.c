@@ -19,6 +19,7 @@ static void	ft_set_keys_theme(t_gobj *game)
 	key_id = -1;
 	game->theme = 1.0f;
 	game->brn = 1.0f;
+	game->paint = 0;
 	while (++key_id < 131072)
 		game->keys_state[key_id] = 0;
 }

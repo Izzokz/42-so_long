@@ -69,6 +69,7 @@ void	ft_print_map(t_gobj *game);
 void	ft_update_dmap(t_gobj *game, int i, int j);
 void	ft_update_tile(t_gobj *game, int i, int j);
 void	ft_free_gobj(t_gobj *game);
+void	ft_set_rules(t_gobj *game, t_rlines rules);
 void	ft_end(t_gobj *game, int exit_id);
 void	ft_map_parser(t_gobj *game, char *map_name);
 void	ft_restart(t_gobj *game, int retry);

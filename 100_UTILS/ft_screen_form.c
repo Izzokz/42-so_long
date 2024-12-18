@@ -18,13 +18,14 @@ static void	ft_copy_pixel(t_gobj *game, unsigned int from, unsigned int *to)
 	unsigned int	g;
 	unsigned int	b;
 
+	from *= game->theme;
 	r = ((from >> 16) & 0xFF) * game->brn;
 	g = ((from >> 8) & 0xFF) * game->brn;
 	b = (from & 0xFF) * game->brn;
 	r = r | ((255 - r) >> 31);
 	g = g | ((255 - g) >> 31);
 	b = b | ((255 - b) >> 31);
-	*to = ((from & 0xFF000000) | (r << 16) | (g << 8) | b) * game->theme;
+	*to = (from & 0xFF000000) | (r << 16) | (g << 8) | b;
 }
 
 static void	unicornize_screen(t_gobj *game, char *data, t_ints *d)

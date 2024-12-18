@@ -116,6 +116,7 @@ int	ft_init_game(t_gobj *game, t_player *p1, t_player *p2, char *map_name)
 		|| ft_init_window(game) == -1 || !game->p1->coin_count)
 		return (-1);
 	game->loaded = 1;
+	ft_change_screen_form(game);
 	ft_print_map(game);
 	ft_loop_process(game);
 	ft_printf("|- Stage %d >>> %s -|\n", game->stage, map_name);

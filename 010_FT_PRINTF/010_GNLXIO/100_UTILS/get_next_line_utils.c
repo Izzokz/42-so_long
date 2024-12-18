@@ -71,21 +71,19 @@ char	*gnlxio_ft_strjoinfree(char **s1, char **s2)
 	size_t	len;
 	char	*new_str;
 
-	len = 0;
-	if (s1 && *s1)
-		len += gnlxio_ft_strlen(*s1);
-	if (s2 && *s2)
+	len = gnlxio_ft_strlen(*s1);
+	if (*s2)
 		len += gnlxio_ft_strlen(*s2);
 	new_str = gnlxio_ft_calloc(len + 1, 1);
 	if (!new_str)
 		return (NULL);
-	if (s1 && *s1)
+	if (*s1)
 	{
 		ft_strlcat(new_str, *s1, len + 1);
 		free(*s1);
 		*s1 = NULL;
 	}
-	if (s2 && *s2)
+	if (*s2)
 	{
 		ft_strlcat(new_str, *s2, len + 1);
 		free(*s2);

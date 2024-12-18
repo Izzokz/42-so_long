@@ -17,14 +17,16 @@ static void	ft_copy_pixel(t_gobj *game, unsigned int *from, unsigned int *to)
 	unsigned int	r;
 	unsigned int	g;
 	unsigned int	b;
+	unsigned int	processed;
 
-	r = ((*from >> 16) & 0xFF) * game->brn;
-	g = ((*from >> 8) & 0xFF) * game->brn;
-	b = (*from & 0xFF) * game->brn;
+	processed = *from * game->theme;
+	r = ((processed >> 16) & 0xFF) * game->brn;
+	g = ((processed >> 8) & 0xFF) * game->brn;
+	b = (processed & 0xFF) * game->brn;
 	r = r | ((255 - r) >> 31);
 	g = g | ((255 - g) >> 31);
 	b = b | ((255 - b) >> 31);
-	*to = ((*from & 0xFF000000) | (r << 16) | (g << 8) | b) * game->theme;
+	*to = ((processed & 0xFF000000) | (r << 16) | (g << 8) | b);
 }
 
 void	ft_copy_to_dmap(t_gobj *game, void *img, int i, int j)

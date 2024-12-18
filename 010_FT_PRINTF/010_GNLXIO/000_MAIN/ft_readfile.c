@@ -34,6 +34,8 @@ t_slines	ft_readfile_split(const char *filename, char *sep)
 	t_rlines	rlines;
 
 	rlines = ft_readfile(filename);
+	if (!rlines)
+		return (NULL);
 	slines = ft_split_rlines(rlines, sep);
 	ft_free_rlines(&rlines);
 	return (slines);

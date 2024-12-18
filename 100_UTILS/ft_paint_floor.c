@@ -14,6 +14,8 @@
 
 void	ft_paint_floor(t_gobj *g, t_player *p)
 {
+	if (!g->paint)
+		return ;
 	if (g->str.map[p->j / 32][p->i / 32] == '0' && p->exit == '#')
 		g->str.map[p->j / 32][p->i / 32] = '-';
 	if (g->str.map[(p->j + 15) / 32][p->i / 32] == '0' && p->exit == '#')

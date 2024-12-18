@@ -19,6 +19,18 @@ static void	function_free(t_slines *map_data, char *path)
 		free(path);
 }
 
+static t_rlines	redirect_map(t_rlines map_dep)
+{
+	if (!map_dep)
+		return (NULL);
+	ft_rlines_cutendl(&map_dep);
+	if (!map_dep)
+		return (NULL);
+	if (in_rlines("NONE", map_dep))
+		return (NULL);
+	return (ft_rlines_dup(map_dep));
+}
+
 int	ft_get_map_data(t_gobj *game, char *map_name)
 {
 	char		*path;
@@ -38,7 +50,9 @@ int	ft_get_map_data(t_gobj *game, char *map_name)
 		return (-1);
 	}
 	game->str.map = ft_rlines_dup(map_data[0]);
-	game->str.map_dep = ft_rlines_dup(map_data[1]);
+	game->str.map_dep = redirect_map(map_data[1]);
+	if (map_data[1])
+		ft_set_rules(game, map_data[2]);
 	ft_rlines_cutendl(&(game->str.map_dep));
 	function_free(&map_data, path);
 	return (0);
