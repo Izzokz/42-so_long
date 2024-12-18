@@ -15,7 +15,8 @@
 static int	valid_remnant(char c)
 {
 	return (c != '0' && c != '1' && c != '!' && c != '?' && c != 'S'
-		&& c != '+' && c != '-' && c != 'K' && c != 'Q' && c != 'q');
+		&& c != '+' && c != '-' && c != 'K' && c != 'Q' && c != 'q'
+		&& c != 'H' && c != 'h');
 }
 
 static void	ft_flood_fill_p1(t_rlines *map, int i, int j)

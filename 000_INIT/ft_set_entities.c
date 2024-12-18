@@ -71,12 +71,7 @@ static void	ft_create_enemy(t_gobj *game, char type, int i, int j)
 		ft_printf_err("We had issue handling enemies", 1);
 		ft_end(game, -1);
 	}
-	ene->active = 1;
-	ene->type = type;
-	ene->i = j * 32 + 8;
-	ene->j = i * 32 + 8;
-	ene->spd = 1.0f;
-	ene->q_pass = 0;
+	ft_init_ene_stats(ene, type, i, j);
 	if (ft_add_enemy(game, ene) == -1)
 	{
 		ft_printf_err("We had issue adding an enemy", 1);
@@ -104,6 +99,10 @@ void	ft_set_enemies(t_gobj *game)
 				ft_create_enemy(game, 'Q', i.x, i.y);
 			if (game->str.map[i.x][i.y] == 'q')
 				ft_create_enemy(game, 'q', i.x, i.y);
+			if (game->str.map[i.x][i.y] == 'H')
+				ft_create_enemy(game, 'H', i.x, i.y);
+			if (game->str.map[i.x][i.y] == 'h')
+				ft_create_enemy(game, 'H', i.x, i.y);
 		}
 	}
 }

@@ -43,6 +43,7 @@ typedef struct s_enemy
 	int		j;
 	int		spd;
 	int		q_pass;
+	int		ticks;
 	char	type;
 }		t_enemy;
 

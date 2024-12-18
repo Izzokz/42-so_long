@@ -42,6 +42,9 @@ static void	move_toward_plr(t_gobj *game, t_enemy *ene, t_player *plr)
 	j_diff = ene->j - plr->j;
 	if (ene->type == 'q')
 		ene->q_pass++;
+	ene->ticks++;
+	if (ene->type == 'H' && ene->ticks % 120 == 0)
+		return (ft_teleport(game, ene, plr));
 	if (i_diff < 0)
 		validate_move(game, ene, ene->spd, 0);
 	else if (i_diff > 0)
