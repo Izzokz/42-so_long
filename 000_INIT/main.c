@@ -12,11 +12,12 @@
 
 #include "../so_long.h"
 
-static void	ft_set_keys(t_gobj *game)
+static void	ft_set_keys_brn(t_gobj *game)
 {
 	int	key_id;
 
 	key_id = -1;
+	game->brn = 1.0f;
 	while (++key_id < 131072)
 		game->keys_state[key_id] = 0;
 }
@@ -45,7 +46,7 @@ int	main(int argc, char **argv)
 	}
 	game.stage = 0;
 	game.retry = 0;
-	ft_set_keys(&game);
+	ft_set_keys_brn(&game);
 	if (ft_init_game(&game, &p1, &p2, argv[1]) == -1)
 		ft_end(&game, -1);
 }

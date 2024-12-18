@@ -12,6 +12,35 @@
 
 #include "../so_long.h"
 
+static void	ft_brightness(t_gobj *game)
+{
+	float	tmp;
+
+	tmp = game->brn;
+	if (game->keys_state[XK_Control_R] && game->keys_state[XK_0])
+		game->brn = 1.0f;
+	if (game->keys_state[XK_Control_R] && game->keys_state[XK_1])
+		game->brn = 0.1f;
+	if (game->keys_state[XK_Control_R] && game->keys_state[XK_2])
+		game->brn = 0.2f;
+	if (game->keys_state[XK_Control_R] && game->keys_state[XK_3])
+		game->brn = 0.3f;
+	if (game->keys_state[XK_Control_R] && game->keys_state[XK_4])
+		game->brn = 0.4f;
+	if (game->keys_state[XK_Control_R] && game->keys_state[XK_5])
+		game->brn = 0.5f;
+	if (game->keys_state[XK_Control_R] && game->keys_state[XK_6])
+		game->brn = 0.6f;
+	if (game->keys_state[XK_Control_R] && game->keys_state[XK_7])
+		game->brn = 0.7f;
+	if (game->keys_state[XK_Control_R] && game->keys_state[XK_8])
+		game->brn = 0.8f;
+	if (game->keys_state[XK_Control_R] && game->keys_state[XK_9])
+		game->brn = 0.9f;
+	if (game->brn != tmp)
+		ft_print_map(game);
+}
+
 static void	ft_key_control2(t_gobj *game)
 {
 	int	moveable;
@@ -26,6 +55,7 @@ static void	ft_key_control2(t_gobj *game)
 	if (game->keys_state[XK_Down] && !game->keys_state[XK_Up] && moveable)
 		ft_move_plr_s(game, game->p2);
 	ft_move_enemies(game);
+	ft_brightness(game);
 }
 
 int	ft_key_control(t_gobj *game)

@@ -36,7 +36,7 @@ void	ft_copy_to_dmap(t_gobj *game, void *img, int i, int j)
 			d.j = ((d.y - j) * d.len1) + ((d.x - i) * d.count1 / 8);
 			if (!((*(unsigned int *)(data + d.j) & 0xFFFFFF) == 0x000000))
 				*(unsigned int *)(dmap_data + d.k)
-					= *(unsigned int *)(data + d.j);
+					= *(unsigned int *)(data + d.j) * game->brn;
 		}
 	}
 }

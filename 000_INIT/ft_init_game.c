@@ -39,6 +39,16 @@ static void	ft_set_keys_off(t_gobj *game)
 	game->keys_state[XK_Control_L] = 0;
 	game->keys_state[XK_Control_R] = 0;
 	game->keys_state[XK_r] = 0;
+	game->keys_state[XK_0] = 0;
+	game->keys_state[XK_1] = 0;
+	game->keys_state[XK_2] = 0;
+	game->keys_state[XK_3] = 0;
+	game->keys_state[XK_4] = 0;
+	game->keys_state[XK_5] = 0;
+	game->keys_state[XK_6] = 0;
+	game->keys_state[XK_7] = 0;
+	game->keys_state[XK_8] = 0;
+	game->keys_state[XK_9] = 0;
 }
 
 static void	ft_init_gobj(t_gobj *game, t_player *p1,
