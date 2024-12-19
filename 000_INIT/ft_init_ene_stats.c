@@ -14,7 +14,6 @@
 
 void	ft_init_ene_stats(t_enemy *ene, char type, int i, int j)
 {
-	ene->active = 1;
 	ene->type = type;
 	ene->i = j * 32 + 8;
 	ene->j = i * 32 + 8;

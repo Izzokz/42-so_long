@@ -30,10 +30,10 @@ static int	ft_clone_enemies(t_enemy ***from, t_enemy ***to)
 		((*to)[i])->j = ((*from)[i])->j;
 		((*to)[i])->spd = ((*from)[i])->spd;
 		((*to)[i])->type = ((*from)[i])->type;
-		((*to)[i])->active = ((*from)[i])->active;
 		((*to)[i])->q_pass = ((*from)[i])->q_pass;
 		((*to)[i])->t_i = ((*from)[i])->t_i;
 		((*to)[i])->t_j = ((*from)[i])->t_j;
+		((*to)[i])->ticks = ((*from)[i])->ticks;
 	}
 	return (0);
 }

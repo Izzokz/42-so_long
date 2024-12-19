@@ -43,10 +43,7 @@ int	ft_click(int button, int x, int y, t_gobj *game)
 	if (button == 1 && game->p3->ticks > 750)
 	{
 		if (!plr_too_close(game, x, y) && summon_enemy(game, x / 32, y / 32))
-		{
-			ft_validate_boss(game);
 			game->p3->ticks = 0;
-		}
 	}
 	else if (game->p3->ticks > 750)
 	{

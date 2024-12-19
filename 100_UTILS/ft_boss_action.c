@@ -52,6 +52,7 @@ int	summon_enemy(t_gobj *gm, int i, int j)
 		ft_create_enemy(gm, 'H', j, i);
 	else
 		ft_create_enemy(gm, 'h', j, i);
+	ft_validate_boss(gm);
 	return (1);
 }
 
@@ -64,28 +65,28 @@ void	init_shoot(t_gobj *game, int i, int j)
 	ft_update_tile(game, j / 32, i / 32);
 }
 
-void	annihilate(t_gobj *game, int i, int j)
+void	annihilate(t_gobj *g, int i, int j)
 {
-	if (game->str.map[game->p1->j / 32][game->p1->i / 32] == '*'
-		|| game->str.map[(game->p1->j + 15) / 32][game->p1->i / 32] == '*'
-		|| game->str.map[game->p1->j / 32][(game->p1->i + 15) / 32] == '*'
-		|| game->str.map[(game->p1->j + 15) / 32][(game->p1->i + 15) / 32]
-			== '*')
+	if (!g->p1->finish && ((g->p1->i / 32 == i / 32 && g->p1->j / 32 == j / 32)
+			|| (g->p1->i / 32 + 1 == i / 32 && g->p1->j / 32 == j / 32)
+			|| (g->p1->i / 32 == i / 32 && g->p1->j / 32 + 1 == j / 32)
+			|| (g->p1->i / 32 + 1 == i / 32
+				&& g->p1->j / 32 + 1 == j / 32)))
 	{
-		game->p1->finish = -1;
-		ft_restart(game, 1);
+		g->p1->finish = -1;
+		ft_restart(g, 1);
 	}
-	if (game->str.map[game->p2->j / 32][game->p2->i / 32] == '*'
-		|| game->str.map[(game->p2->j + 15) / 32][game->p2->i / 32] == '*'
-		|| game->str.map[game->p2->j / 32][(game->p2->i + 15) / 32] == '*'
-		|| game->str.map[(game->p2->j + 15) / 32][(game->p2->i + 15) / 32]
-			== '*')
+	if (!g->p2->finish && ((g->p2->i / 32 == i / 32 && g->p2->j / 32 == j / 32)
+			|| (g->p2->i / 32 + 1 == i / 32 && g->p2->j / 32 == j / 32)
+			|| (g->p2->i / 32 == i / 32 && g->p2->j / 32 + 1 == j / 32)
+			|| (g->p2->i / 32 + 1 == i / 32
+				&& g->p2->j / 32 + 1 == j / 32)))
 	{
-		game->p2->finish = -1;
-		ft_restart(game, 1);
+		g->p2->finish = -1;
+		ft_restart(g, 1);
 	}
-	game->str.map[j / 32][i / 32] = '0';
-	ft_update_tile(game, j / 32, i / 32);
+	g->str.map[j / 32][i / 32] = '0';
+	ft_update_tile(g, j / 32, i / 32);
 }
 
 void	ft_boss_action(t_gobj *game, t_enemy *ene, t_player *plr)

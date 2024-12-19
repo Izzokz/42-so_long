@@ -33,9 +33,9 @@ static int	ft_clone_enemies(t_enemy ***from, t_enemy ***to, int id)
 			((*to)[i.j])->j = ((*from)[i.i])->j;
 			((*to)[i.j])->spd = ((*from)[i.i])->spd;
 			((*to)[i.j])->type = ((*from)[i.i])->type;
-			((*to)[i.j])->active = ((*from)[i.i])->active;
 			((*to)[i.j])->t_i = ((*from)[i.i])->t_i;
 			((*to)[i.j])->t_j = ((*from)[i.i])->t_j;
+			((*to)[i.j])->ticks = ((*from)[i.i])->ticks;
 		}
 	}
 	return (0);
@@ -87,6 +87,7 @@ int	ft_merge_from(t_gobj *game, t_enemy *ene, int id)
 				ft_printf_err("Error: Merging to M", 1);
 				ft_end(game, -1);
 			}
+			ft_validate_boss(game);
 			return (1);
 		}
 	}

@@ -38,7 +38,6 @@ typedef struct s_player
 
 typedef struct s_enemy
 {
-	int		active;
 	int		i;
 	int		j;
 	int		spd;
