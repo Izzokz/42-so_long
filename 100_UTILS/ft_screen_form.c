@@ -28,11 +28,8 @@ static void	ft_copy_pixel(t_gobj *game, unsigned int from, unsigned int *to)
 	*to = (from & 0xFF000000) | (r << 16) | (g << 8) | b;
 }
 
-static void	unicornize_screen(t_gobj *game, char *data, t_ints *d)
+static void	colorize_screen(t_gobj *game, char *data, t_ints *d)
 {
-	int	r_mult;
-
-	r_mult = ft_random(3);
 	d->i = -1;
 	while (++(d->i) < d->len)
 	{
@@ -41,13 +38,13 @@ static void	unicornize_screen(t_gobj *game, char *data, t_ints *d)
 		{
 			d->k = (d->j * d->len) + (d->i * d->count / 8);
 			if (d->j % 21 < 7 && d->j != 0)
-				ft_copy_pixel(game, 0x32A8DD * r_mult,
+				ft_copy_pixel(game, 0xF5F5F5,
 					(unsigned int *)(data + d->k));
 			else if (d->j % 21 < 14 && d->j != 0)
-				ft_copy_pixel(game, 0x32A88F * r_mult,
+				ft_copy_pixel(game, 0xea00d9,
 					(unsigned int *)(data + d->k));
 			else
-				ft_copy_pixel(game, 0x32A8A6 * r_mult,
+				ft_copy_pixel(game, 0xFF8FE3,
 					(unsigned int *)(data + d->k));
 		}
 	}
@@ -73,12 +70,11 @@ void	ft_screen_form(t_gobj *game)
 		ft_end(game, -1);
 	}
 	d.height = game->win_j;
-	unicornize_screen(game, data, &d);
+	colorize_screen(game, data, &d);
 }
 
 void	ft_change_screen_form(t_gobj *game)
 {
-	game->keys_state[XK_r] = 0;
 	mlx_destroy_image(game->mlx, game->screen_form);
 	game->screen_form = NULL;
 	ft_screen_form(game);

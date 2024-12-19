@@ -30,6 +30,7 @@ static void	fire_laser(t_gobj *game)
 		annihilate(game, game->p3->t_i, game->p3->t_j);
 		game->p3->t_i = 0;
 		game->p3->t_j = 0;
+		game->p3->ticks = 0;
 	}
 }
 
