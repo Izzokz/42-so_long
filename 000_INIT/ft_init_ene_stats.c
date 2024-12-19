@@ -18,7 +18,12 @@ void	ft_init_ene_stats(t_enemy *ene, char type, int i, int j)
 	ene->type = type;
 	ene->i = j * 32 + 8;
 	ene->j = i * 32 + 8;
-	ene->spd = 1;
+	if (type == 'M')
+		ene->spd = 2;
+	else
+		ene->spd = 1;
 	ene->q_pass = 0;
 	ene->ticks = 0;
+	ene->t_i = 0;
+	ene->t_j = 0;
 }

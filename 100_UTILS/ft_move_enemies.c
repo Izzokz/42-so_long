@@ -39,11 +39,13 @@ static void	move_toward_plr(t_gobj *game, t_enemy *ene, t_player *plr)
 
 	if (!plr)
 		return ;
+	ene->ticks++;
+	if (ene->type == 'b')
+		return ;
 	i_diff = ene->i - plr->i;
 	j_diff = ene->j - plr->j;
 	if (ene->type == 'q')
 		ene->q_pass++;
-	ene->ticks++;
 	if (ene->type == 'B')
 		return (ft_boss_action(game, ene, plr));
 	if ((ene->type == 'H' && ene->ticks % 120 == 0)

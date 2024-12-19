@@ -32,6 +32,8 @@ static int	ft_clone_enemies(t_enemy ***from, t_enemy ***to)
 		((*to)[i])->type = ((*from)[i])->type;
 		((*to)[i])->active = ((*from)[i])->active;
 		((*to)[i])->q_pass = ((*from)[i])->q_pass;
+		((*to)[i])->t_i = ((*from)[i])->t_i;
+		((*to)[i])->t_j = ((*from)[i])->t_j;
 	}
 	return (0);
 }
@@ -77,7 +79,7 @@ void	ft_create_enemy(t_gobj *game, char type, int i, int j)
 		ft_printf_err("We had issue adding an enemy", 1);
 		ft_end(game, -1);
 	}
-	if (type == 'Q')
+	if (type == 'Q' || type == 'b')
 		game->str.map[i][j] = '0';
 	else if (type == 'q')
 		game->str.map[i][j] = '+';

@@ -59,6 +59,7 @@ static int	what_the(t_gobj *game)
 
 int	ft_loop_process(t_gobj *game)
 {
+	mlx_mouse_hook(game->win, ft_click, game);
 	mlx_hook(game->win, 25, 1L << 18, ft_updated_window_re_print, game);
 	mlx_hook(game->win, 17, 0, what_the, game);
 	mlx_hook(game->win, 2, 1L << 0, key_enable, game);

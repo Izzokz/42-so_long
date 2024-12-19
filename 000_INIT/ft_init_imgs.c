@@ -45,6 +45,8 @@ static int	ft_init_imgs3(t_gobj *game, int count)
 		return (ft_img_err());
 	if (!ft_load_img(game, "target.xpm"))
 		return (ft_img_err());
+	if (!ft_load_img(game, "boss.xpm"))
+		return (ft_img_err());
 	return (count);
 }
 
@@ -79,7 +81,7 @@ int	ft_init_imgs(t_gobj *game)
 {
 	int	count;
 
-	count = 21;
+	count = 22;
 	game->imgs = ft_calloc(count + 1, sizeof(void *));
 	if (!game->imgs)
 		return (-1);

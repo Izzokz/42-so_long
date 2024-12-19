@@ -21,6 +21,9 @@
 # include <X11/keysym.h>
 
 float	ft_delta_time(void);
+void	init_shoot(t_gobj *game, int i, int j);
+void	annihilate(t_gobj *game, int i, int j);
+int		ft_click(int button, int x, int y, t_gobj *game);
 int		is_valid_move(t_gobj *game, int i, int j);
 int		is_valid_char(char c);
 int		ft_playable_p1(t_rlines map, int i, int j);
@@ -60,6 +63,7 @@ void	ft_boss_action(t_gobj *game, t_enemy *ene, t_player *plr);
 void	ft_set_players(t_gobj *game);
 void	ft_init_ene_stats(t_enemy *ene, char c, int i, int j);
 void	ft_set_enemies(t_gobj *game);
+void	ft_validate_boss(t_gobj *game);
 int		ft_key_control(t_gobj *game);
 int		ft_loop_process(t_gobj *game);
 int		ft_updated_window_re_print(t_gobj *game);

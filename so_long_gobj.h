@@ -45,6 +45,8 @@ typedef struct s_enemy
 	int		q_pass;
 	int		ticks;
 	char	type;
+	int		t_i; // target i (Boss only)
+	int		t_j; // target j (Boss only)
 }		t_enemy;
 
 typedef struct s_str
@@ -66,6 +68,7 @@ typedef struct s_gobj
 	void		*dmap;
 	t_player	*p1;
 	t_player	*p2;
+	t_enemy		*p3;
 	t_enemy		**enemies;
 	int			height;
 	int			width;

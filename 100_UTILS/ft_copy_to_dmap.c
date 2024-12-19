@@ -72,6 +72,8 @@ static void	ft_print_enemy(t_gobj *game, t_enemy *ene)
 		ft_copy_to_dmap(game, game->imgs[18], ene->i, ene->j);
 	if (ene->type == 'B')
 		ft_copy_to_dmap(game, game->imgs[19], ene->i, ene->j);
+	if (ene->type == 'b')
+		ft_copy_to_dmap(game, game->imgs[21], ene->i, ene->j);
 }
 
 void	ft_print_entities(t_gobj *game)
