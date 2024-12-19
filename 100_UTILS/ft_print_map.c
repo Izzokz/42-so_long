@@ -48,6 +48,8 @@ static void	ft_call_copy(t_gobj *game, int i, int j)
 		ft_copy_to_dmap(game, game->imgs[12], j * 32 + 8, i * 32 + 8);
 	if (game->str.map[i][j] == 'K')
 		ft_copy_to_dmap(game, game->imgs[13], j * 32 + 8, i * 32 + 8);
+	if (game->str.map[i][j] == '*')
+		ft_copy_to_dmap(game, game->imgs[20], j * 32, i * 32);
 }
 
 void	ft_print_map(t_gobj *game)

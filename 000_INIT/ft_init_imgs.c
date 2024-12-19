@@ -39,6 +39,15 @@ static int	ft_img_err(void)
 	return (-1);
 }
 
+static int	ft_init_imgs3(t_gobj *game, int count)
+{
+	if (!ft_load_img(game, "Boss.xpm"))
+		return (ft_img_err());
+	if (!ft_load_img(game, "target.xpm"))
+		return (ft_img_err());
+	return (count);
+}
+
 static int	ft_init_imgs2(t_gobj *game, int count)
 {
 	if (!ft_load_img(game, "3x!T.xpm"))
@@ -63,14 +72,14 @@ static int	ft_init_imgs2(t_gobj *game, int count)
 		return (ft_img_err());
 	if (!ft_load_img(game, "hajt.xpm"))
 		return (ft_img_err());
-	return (count);
+	return (ft_init_imgs3(game, count));
 }
 
 int	ft_init_imgs(t_gobj *game)
 {
 	int	count;
 
-	count = 19;
+	count = 21;
 	game->imgs = ft_calloc(count + 1, sizeof(void *));
 	if (!game->imgs)
 		return (-1);

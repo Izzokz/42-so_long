@@ -31,7 +31,19 @@ static int	all_processes(t_gobj *game)
 	if (game->loaded)
 	{
 		ft_unlock_player(game, game->p1);
+		if (game->p1->i < 0 || game->p1->i >= game->width * 32
+			|| game->p1->j < 0 || game->p1->j >= game->height * 32)
+		{
+			ft_printf("The impossible happened...\n");
+			ft_restart(game, 1);
+		}
 		ft_unlock_player(game, game->p2);
+		if (game->p2->i < 0 || game->p2->i >= game->width * 32
+			|| game->p2->j < 0 || game->p2->j >= game->height * 32)
+		{
+			ft_printf("The impossible happened...\n");
+			ft_restart(game, 1);
+		}
 		ft_key_control(game);
 		is_complete(game);
 	}

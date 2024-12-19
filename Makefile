@@ -15,7 +15,7 @@ UTILSRC = ft_end.c ft_key_control.c ft_print_map.c \
 	ft_print_stats.c ft_quit_game.c ft_restart.c \
 	ft_copy_to_dmap.c ft_print_doors.c ft_unlock_player.c \
 	ft_screen_form.c ft_move_enemies.c ft_paint_floor.c \
-	ft_update_enemies.c ft_teleport.c
+	ft_update_enemies.c ft_teleport.c ft_boss_action.c
 RANDSRC = ft_random.c
 
 LIB = 010_FT_PRINTF/libftprintf.a 020_LIBFT/libft.a

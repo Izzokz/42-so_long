@@ -35,7 +35,7 @@ int	main(int argc, char **argv)
 		ft_printf("No map given. Retry.");
 		return (-1);
 	}
-	if (SPEED > 4)
+	if (SPEED > 4 || SPEED == 0 || SPEED < -4)
 	{
 		ft_printf("BRO ARE YOU TRYNA BREAK THE GAME?? SPEED=%d\n", (int)SPEED);
 		return (-1);

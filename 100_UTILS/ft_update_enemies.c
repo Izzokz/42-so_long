@@ -68,9 +68,13 @@ int	ft_merge_from(t_gobj *game, t_enemy *ene, int id)
 	int	i;
 
 	i = -1;
-	while (ene->type != 'q' && game->enemies[++i])
+	if (ene->type == 'q' || ene->type == 'B' || ene->type == 'b')
+		return (0);
+	while (game->enemies[++i])
 	{
 		if (i != id && game->enemies[i]->type != 'q'
+			&& game->enemies[i]->type != 'B'
+			&& game->enemies[i]->type != 'b'
 			&& abs(ene->i - game->enemies[i]->i) < 16
 			&& abs(ene->j - game->enemies[i]->j) < 16)
 		{

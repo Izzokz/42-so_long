@@ -61,7 +61,7 @@ static int	ft_add_enemy(t_gobj *game, t_enemy *ene)
 	return (0);
 }
 
-static void	ft_create_enemy(t_gobj *game, char type, int i, int j)
+void	ft_create_enemy(t_gobj *game, char type, int i, int j)
 {
 	t_enemy	*ene;
 
@@ -103,6 +103,10 @@ void	ft_set_enemies(t_gobj *game)
 				ft_create_enemy(game, 'H', i.x, i.y);
 			if (game->str.map[i.x][i.y] == 'h')
 				ft_create_enemy(game, 'h', i.x, i.y);
+			if (game->str.map[i.x][i.y] == 'B')
+				ft_create_enemy(game, 'B', i.x, i.y);
+			if (game->str.map[i.x][i.y] == 'b')
+				ft_create_enemy(game, 'b', i.x, i.y);
 		}
 	}
 }

@@ -14,7 +14,8 @@
 
 static int	does_kill_plr(t_enemy *ene, t_player *plr)
 {
-	return (abs(ene->i - plr->i) < 16 && abs(ene->j - plr->j) < 16);
+	return (plr->finish == 0
+		&& abs(ene->i - plr->i) < 16 && abs(ene->j - plr->j) < 16);
 }
 
 static void	validate_move(t_gobj *gm, t_enemy *ene, int i, int j)
@@ -43,6 +44,8 @@ static void	move_toward_plr(t_gobj *game, t_enemy *ene, t_player *plr)
 	if (ene->type == 'q')
 		ene->q_pass++;
 	ene->ticks++;
+	if (ene->type == 'B')
+		return (ft_boss_action(game, ene, plr));
 	if ((ene->type == 'H' && ene->ticks % 120 == 0)
 		|| (ene->type == 'h' && ene->ticks % 90 == 0))
 		return (ft_teleport(game, ene, plr));
