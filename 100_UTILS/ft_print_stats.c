@@ -87,6 +87,6 @@ void	ft_print_stats(t_gobj *game)
 			game->p3->j - 4, 0xCC0000, *stat);
 		refresh_stat(stat);
 	}
-	if (game->p2->finish != 0)
+	if (game->p2->finish == 0)
 		ft_print_stats_p2(game, stat);
 }

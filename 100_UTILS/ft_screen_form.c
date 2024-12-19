@@ -32,7 +32,7 @@ static void	unicornize_screen(t_gobj *game, char *data, t_ints *d)
 {
 	int	r_mult;
 
-	r_mult = ft_random(7);
+	r_mult = ft_random(3);
 	d->i = -1;
 	while (++(d->i) < d->len)
 	{
@@ -40,14 +40,14 @@ static void	unicornize_screen(t_gobj *game, char *data, t_ints *d)
 		while (++(d->j) < d->height)
 		{
 			d->k = (d->j * d->len) + (d->i * d->count / 8);
-			if (d->j % 9 < 3 && d->j != 0)
-				ft_copy_pixel(game, 0xFFFFFF * r_mult,
+			if (d->j % 21 < 7 && d->j != 0)
+				ft_copy_pixel(game, 0x32A8DD * r_mult,
 					(unsigned int *)(data + d->k));
-			else if (d->j % 9 < 6 && d->j != 0)
-				ft_copy_pixel(game, 0xA3E8FF * r_mult,
+			else if (d->j % 21 < 14 && d->j != 0)
+				ft_copy_pixel(game, 0x32A88F * r_mult,
 					(unsigned int *)(data + d->k));
 			else
-				ft_copy_pixel(game, 0xA3FFBC * r_mult,
+				ft_copy_pixel(game, 0x32A8A6 * r_mult,
 					(unsigned int *)(data + d->k));
 		}
 	}
