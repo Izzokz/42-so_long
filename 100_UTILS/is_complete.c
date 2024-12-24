@@ -22,7 +22,7 @@ int	is_complete(t_gobj *game)
 	{
 		tot_mp = (game->p1->moves / 32) + (game->p2->moves / 32);
 		msg = ft_str_random(game->str.msg[1]);
-		ft_printf("%s%s\n", OWLINE, msg);
+		ft_printf("%s\n", msg);
 		free(msg);
 		ft_printf("You completed the game in %i moves !\n", tot_mp);
 		ft_restart(game, 0);

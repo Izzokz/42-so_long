@@ -17,7 +17,7 @@ void	ft_quit_game(t_gobj *game)
 	char	*msg;
 
 	msg = ft_str_random(game->str.msg[0]);
-	ft_printf("%s%s\n", OWLINE, msg);
+	ft_printf("%s\n", msg);
 	free(msg);
 	ft_end(game, 0);
 }

@@ -21,10 +21,6 @@
 #  define FPS 220.0f
 # endif
 
-# ifndef OWLINE // Over Write Line
-#  define OWLINE "\r                                                         \r"
-# endif
-
 typedef struct s_player
 {
 	int		moves;

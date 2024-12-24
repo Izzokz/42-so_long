@@ -52,7 +52,7 @@ static int	all_processes(t_gobj *game)
 
 static int	what_the(t_gobj *game)
 {
-	ft_printf("%sSurprising choice...\n", OWLINE);
+	ft_printf("Surprising choice...\n");
 	ft_end(game, 0);
 	return (0);
 }
