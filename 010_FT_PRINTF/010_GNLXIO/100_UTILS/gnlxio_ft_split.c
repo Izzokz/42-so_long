@@ -93,7 +93,10 @@ static void	ft_strsbuild(char ***strs, char *line, char *sep)
 		nextsep = ft_strlenc(line, sep);
 		(*strs)[i] = ft_substr(line, 0, nextsep);
 		if (!(*strs)[i])
-			return (ft_free_rlines(strs));
+		{
+			ft_free_rlines(strs);
+			return ;
+		}
 		line += nextsep;
 	}
 }

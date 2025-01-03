@@ -81,13 +81,13 @@ static t_slines	ft_split_rlines_process(t_slines *split,
 		if (gnlxio_ft_strcmp(rlines[i->i], sep) == 0)
 		{
 			if (!ft_finalize_chain(split, i))
-				return (ft_free_slines(split), NULL);
+				return (ft_free_slines(split));
 		}
 		else if (!ft_add_to_chain(split, rlines, sep, i))
-			return (ft_free_slines(split), NULL);
+			return (ft_free_slines(split));
 	}
 	if (!ft_finalize_chain(split, i))
-		return (ft_free_slines(split), NULL);
+		return (ft_free_slines(split));
 	return (*split);
 }
 
