@@ -86,11 +86,11 @@ $(OBJDIR)%.o: $(UTILDIR)%.c | $(OBJDIR)
 	$(PRINT_PROGRESS)
 
 clean:
-	@rm -f $(OBJ)
+	@rm -f $(OBJ) $(DEP)
 	@printf "\033[36m\033[1mGNLXIO: \033[37m666_OBJ/ Cleaned !\033[0m\n"
 
 fclean:
-	@rm -f $(OBJ) $(NAME)
+	@rm -f $(OBJ) $(DEP) $(NAME)
 	@printf "\033[36m\033[1mGNLXIO: \033[37mCleaned !\033[0m\n"
 
 re: fclean

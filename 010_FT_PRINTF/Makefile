@@ -101,12 +101,12 @@ $(TESTMAINO): $(TESTMAIN)
 
 clean:
 	@$(MAKE) clean -C 010_GNLXIO/
-	@rm -f $(OBJ) $(TESTMAINO)
+	@rm -f $(OBJ) $(DEP) $(TESTMAINO) 666_OBJ/main.o 666_OBJ/main.d
 	@printf "\033[31m\033[1mft_printf: \033[1;37m666_OBJ/ Cleaned !\033[0m\n"
 
 fclean:
 	@$(MAKE) fclean -C 010_GNLXIO/
-	@rm -f $(TEST) $(OBJ) $(TESMAINO) $(NAME)
+	@rm -f $(TEST) $(OBJ) $(DEP) $(TESMAINO) $(NAME) 666_OBJ/main.o 666_OBJ/main.d
 	@printf "\033[31m\033[1mft_printf: \033[1;37mCleaned !\033[0m\n"
 
 re: fclean
