@@ -71,6 +71,14 @@ bonus: $(PRINTF) $(LIBFT) $(OBJ)
 	@$(CCA) $(OBJ) -Lmlx_linux -lmlx_Linux -Lmlx-linux -Imlx_linux -lXext -lX11 -lm -lz -o so_long $(LIBFT) $(PRINTF)
 	@printf "\n\033[32m\033[1mso_long: \033[1;97mBuild Complete !\033[0m\n"
 
+mlx:
+	@rm -rf mlx-linux
+	@git clone git@github.com:42Paris/minilibx-linux.git mlx-linux
+	@chmod 0777 mlx-linux/configure
+	@cd mlx-linux && ./configure
+	@cd ..
+	@printf "\033[32m\033[1mso_long: \033[1;37mmlx_linux Set Up !\033[0m\n"
+
 $(PRINTF):
 	@$(MAKE) -C 010_FT_PRINTF/
 
@@ -110,6 +118,6 @@ fclean:
 
 re: fclean all
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re bonus mlx
 
 -include $(DEP)
