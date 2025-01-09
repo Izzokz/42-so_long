@@ -86,7 +86,7 @@ static int	valid_map(t_gobj *game)
 	game->height = ft_rlines_len(game->str.map);
 	game->width = ft_strlen(game->str.map[0]);
 	if (game->width * 32 > game->win_i || game->height * 32 > game->win_j - 64)
-		return (ft_printf("Your map can't be bigger than your screen") * 0);
+		return (ft_printf("Your map can't be bigger than your screen\n") * 0);
 	if (game->width > 42 || game->height > 42)
 		return (ft_printf("Your map can't be bigger than 42 * 42.\n") * 0);
 	if (!is_rect_map(game->str.map) || !are_valid_walls(game->str.map))
@@ -123,8 +123,6 @@ void	ft_map_parser(t_gobj *game, char *map_name)
 	ft_set_players(game);
 	ft_set_enemies(game);
 	ft_validate_boss(game);
-	game->height = ft_rlines_len(game->str.map);
-	game->width = ft_strlen(game->str.map[0]);
 	game->p1->coin_count = ft_count_coins(game, 'C');
 	if (game->p2->finish == 0)
 		game->p2->coin_count = ft_count_coins(game, '$');

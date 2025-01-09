@@ -39,7 +39,7 @@ void	ft_copy_to_dmap(t_gobj *game, void *img, int i, int j)
 	data = mlx_get_data_addr(img, &(d.count1), &(d.len1), &(d.z));
 	if (!dmap_data || !data)
 	{
-		ft_printf_err("A problem occured: ft_print_map.c: 21||22", 1);
+		ft_printf_err("A problem occured: ft_copy_to_dmap.c: 38||39", 1);
 		ft_end(game, -1);
 	}
 	d.x = i - 1;

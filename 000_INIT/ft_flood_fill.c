@@ -39,7 +39,7 @@ int	ft_playable_p1(t_rlines map, int i, int j)
 	temp = ft_rlines_dup(map);
 	if (!temp)
 	{
-		ft_printf_err("so_long:ft_flood_fill.c:31:ft_rlines_dup()", 0);
+		ft_printf_err("so_long:ft_flood_fill.c:39:ft_rlines_dup()", 0);
 		return (0);
 	}
 	ft_flood_fill_p1(&temp, i, j);
@@ -80,7 +80,7 @@ int	ft_playable_p2(t_rlines map, int i, int j)
 	temp = ft_rlines_dup(map);
 	if (!temp)
 	{
-		ft_printf_err("so_long:ft_flood_fill.c:74:ft_rlines_dup()", 0);
+		ft_printf_err("so_long:ft_flood_fill.c:80:ft_rlines_dup()", 0);
 		return (0);
 	}
 	ft_flood_fill_p2(&temp, i, j);

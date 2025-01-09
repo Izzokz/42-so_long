@@ -25,7 +25,14 @@ OBJDIR = 666_OBJ/
 OBJ = $(patsubst %.c,$(OBJDIR)%.o,$(notdir $(INITSRC) $(UTILSRC) $(RANDSRC)))
 DEP = $(patsubst %.c,$(OBJDIR)%.d,$(notdir $(INITSRC) $(UTILSRC) $(RANDSRC)))
 
-CCA = cc -Wall -Werror -Wextra -g3 -MP -MMD -g
+MSRC = 200_MANDATORY/main.c 200_MANDATORY/ft_end.c 200_MANDATORY/ft_get_map_data.c 200_MANDATORY/ft_init_game.c 200_MANDATORY/ft_init_imgs.c \
+	200_MANDATORY/ft_key_control.c 200_MANDATORY/ft_loop_process.c 200_MANDATORY/ft_set_player.c 200_MANDATORY/ft_move_plr.c \
+	200_MANDATORY/ft_print_map.c 200_MANDATORY/is_complete.c 200_MANDATORY/is_valid_char.c 200_MANDATORY/ft_count_coins.c \
+	200_MANDATORY/ft_exit_area.c 200_MANDATORY/ft_map_parser.c
+
+MOBJ = $(MSRC:.c=.o)
+
+CCA = cc -Wall -Werror -Wextra -g3 -MP -MMD
 
 TOTAL_FILES = $(words $(OBJ))
 PROGRESS = 0
@@ -57,8 +64,11 @@ MAKEFLAGS += --no-print-directory
 
 all: $(NAME)
 
-$(NAME): $(PRINTF) $(LIBFT) $(OBJ)
-	@$(CCA) $(OBJ) -Lmlx_linux -lmlx_Linux -Lmlx-linux -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME) $(LIBFT) $(PRINTF)
+$(NAME): $(PRINTF) $(LIBFT) $(MOBJ)
+	@cc -Wall -Werror -Wextra -g3 $(MOBJ) -Lmlx_linux -lmlx_Linux -Lmlx-linux -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME) $(LIBFT) $(PRINTF)
+
+bonus: $(PRINTF) $(LIBFT) $(OBJ)
+	@$(CCA) $(OBJ) -Lmlx_linux -lmlx_Linux -Lmlx-linux -Imlx_linux -lXext -lX11 -lm -lz -o so_long $(LIBFT) $(PRINTF)
 	@printf "\n\033[32m\033[1mso_long: \033[1;97mBuild Complete !\033[0m\n"
 
 $(PRINTF):
@@ -83,20 +93,23 @@ $(OBJDIR)%.o: $(RANDDIR)%.c | $(OBJDIR)
 	@$(CCA) -o $@ -c $<
 	$(PRINT_PROGRESS)
 
+200_MANDATORY/%.o: 200_MANDATORY/%.c
+	@cc -Wall -Werror -Wextra -g3 -I200_MANDATORY/ -c $< -o $@
+
 clean:
 	@$(MAKE) clean -C 010_FT_PRINTF/
 	@$(MAKE) clean -C 020_LIBFT/
-	@rm -f $(OBJ)
+	@rm -f $(OBJ) $(DEP) $(MOBJ)
 	@printf "\033[32m\033[1mso_long: \033[1;37m666_OBJ/ Cleaned !\033[0m\n"
 
 fclean:
 	@$(MAKE) fclean -C 010_FT_PRINTF/
 	@$(MAKE) fclean -C 020_LIBFT/
-	@rm -f $(NAME) $(OBJ)
+	@rm -f $(NAME) $(OBJ) $(DEP) $(MOBJ)
 	@printf "\033[32m\033[1mso_long: \033[1;37mCleaned !\033[0m\n"
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus
 
 -include $(DEP)
