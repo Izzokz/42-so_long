@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "../so_long.h"
-#include <math.h>
 
 static int	not_locked(t_gobj *gm, int pi, int pj)
 {

@@ -11,9 +11,7 @@
 /* ************************************************************************** */
 
 #include "../so_long.h"
-#include <stdlib.h>
 #include <time.h>
-#include <fcntl.h>
 
 int	ft_random(int max)
 {
