@@ -28,7 +28,10 @@ void	ft_move_plr_n(t_gobj *game, t_player *plr)
 		return ;
 	plr->j--;
 	plr->coin_count -= ft_collect(game, plr->i, plr->j);
-	ft_printf("Moves: %i\n", ++(plr->moves));
+	if (plr->moves + 1 >= 0)
+		ft_printf("Moves: %i\n", ++(plr->moves));
+	else
+		ft_printf("Moves capped: INT_MAX\n");
 	ft_exit_area(game, &plr);
 	ft_update_dmap(game, plr->i, plr->j + 1);
 }
@@ -39,7 +42,10 @@ void	ft_move_plr_s(t_gobj *game, t_player *plr)
 		return ;
 	plr->j++;
 	plr->coin_count -= ft_collect(game, plr->i, plr->j);
-	ft_printf("Moves: %i\n", ++(plr->moves));
+	if (plr->moves + 1 >= 0)
+		ft_printf("Moves: %i\n", ++(plr->moves));
+	else
+		ft_printf("Moves capped: INT_MAX\n");
 	ft_exit_area(game, &plr);
 	ft_update_dmap(game, plr->i, plr->j - 1);
 }
@@ -50,7 +56,10 @@ void	ft_move_plr_w(t_gobj *game, t_player *plr)
 		return ;
 	plr->i--;
 	plr->coin_count -= ft_collect(game, plr->i, plr->j);
-	ft_printf("Moves: %i\n", ++(plr->moves));
+	if (plr->moves + 1 >= 0)
+		ft_printf("Moves: %i\n", ++(plr->moves));
+	else
+		ft_printf("Moves capped: INT_MAX\n");
 	ft_exit_area(game, &plr);
 	ft_update_dmap(game, plr->i + 1, plr->j);
 }
@@ -61,7 +70,10 @@ void	ft_move_plr_e(t_gobj *game, t_player *plr)
 		return ;
 	plr->i++;
 	plr->coin_count -= ft_collect(game, plr->i, plr->j);
-	ft_printf("Moves: %i\n", ++(plr->moves));
+	if (plr->moves + 1 >= 0)
+		ft_printf("Moves: %i\n", ++(plr->moves));
+	else
+		ft_printf("Moves capped: INT_MAX\n");
 	ft_exit_area(game, &plr);
 	ft_update_dmap(game, plr->i - 1, plr->j);
 }

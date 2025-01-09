@@ -38,8 +38,10 @@ static int	all_processes(t_gobj *game)
 			ft_restart(game, 1);
 		}
 		ft_unlock_player(game, game->p2);
-		if (!game->p2->finish && (game->p2->i <= 0 || game->p2->i >= game->width * 32
-			|| game->p2->j <= 0 || game->p2->j >= game->height * 32))
+		if (!game->p2->finish
+			&& (game->p2->i <= 0 || game->p2->i >= game->width * 32
+				|| game->p2->j <= 0
+				|| game->p2->j >= game->height * 32))
 		{
 			ft_printf("The impossible happened...\n");
 			ft_restart(game, 1);

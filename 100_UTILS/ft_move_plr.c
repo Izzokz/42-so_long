@@ -52,7 +52,7 @@ void	ft_move_plr_n(t_gobj *game, t_player *plr)
 	else
 		plr->coin_count -= ft_collect2(game, plr->i, plr->j);
 	ft_super(game, plr);
-	plr->moves += speed;
+	plr->moves += speed * (plr->moves + speed >= 0);
 	ft_paint_floor(game, plr);
 	game->keys += ft_collect_key(game, plr->i, plr->j);
 	ft_exit_area(game, &plr);
@@ -77,7 +77,7 @@ void	ft_move_plr_s(t_gobj *game, t_player *plr)
 	else
 		plr->coin_count -= ft_collect2(game, plr->i, plr->j);
 	ft_super(game, plr);
-	plr->moves += speed;
+	plr->moves += speed * (plr->moves + speed >= 0);
 	ft_paint_floor(game, plr);
 	game->keys += ft_collect_key(game, plr->i, plr->j);
 	ft_exit_area(game, &plr);
@@ -102,7 +102,7 @@ void	ft_move_plr_w(t_gobj *game, t_player *plr)
 	else
 		plr->coin_count -= ft_collect2(game, plr->i, plr->j);
 	ft_super(game, plr);
-	plr->moves += speed;
+	plr->moves += speed * (plr->moves + speed >= 0);
 	ft_paint_floor(game, plr);
 	game->keys += ft_collect_key(game, plr->i, plr->j);
 	ft_exit_area(game, &plr);
@@ -127,7 +127,7 @@ void	ft_move_plr_e(t_gobj *game, t_player *plr)
 	else
 		plr->coin_count -= ft_collect2(game, plr->i, plr->j);
 	ft_super(game, plr);
-	plr->moves += speed;
+	plr->moves += speed * (plr->moves + speed >= 0);
 	ft_paint_floor(game, plr);
 	game->keys += ft_collect_key(game, plr->i, plr->j);
 	ft_exit_area(game, &plr);

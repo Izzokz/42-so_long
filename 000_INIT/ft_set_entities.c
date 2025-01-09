@@ -92,6 +92,7 @@ void	ft_set_enemies(t_gobj *game)
 	t_ints	i;
 
 	i.x = -1;
+	game->p3 = NULL;
 	while (game->str.map[++(i.x)])
 	{
 		i.y = -1;

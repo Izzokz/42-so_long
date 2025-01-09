@@ -66,7 +66,7 @@ void	ft_print_stats(t_gobj *game)
 {
 	char	**stat;
 
-	if (game->p1->finish == 0)
+	if (!game->p1->finish)
 	{
 		stat = get_stat(game, 1);
 		mlx_string_put(game->mlx, game->win,
@@ -77,16 +77,13 @@ void	ft_print_stats(t_gobj *game)
 	}
 	if (game->p3)
 	{
-		if (game->p3->t_i == 0 && game->p3->t_j == 0)
-			stat = get_stat(game, 3);
-		else
-			stat = get_stat(game, 3);
+		stat = get_stat(game, 3);
 		mlx_string_put(game->mlx, game->win,
 			center_stat(*stat, game->p3->i
 				+ (game->win_i - game->width * 32) / 2),
 			game->p3->j - 4, 0xCC0000, *stat);
 		refresh_stat(stat);
 	}
-	if (game->p2->finish == 0)
+	if (!game->p2->finish)
 		ft_print_stats_p2(game, stat);
 }
