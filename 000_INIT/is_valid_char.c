@@ -21,7 +21,7 @@ Returns 'a' if there's no second player without a proper environment
 Returns 'b' if there's no second player with a playable environment
 Returns 'c' if there's a second player without a proper environment
 Returns 'd' if there's a second player with a playable environment
-Returns 'e' there's too much player2
+Returns 'e' if there are too much player2
 */
 char	ft_two_players_manager(t_rlines map)
 {
@@ -45,9 +45,9 @@ char	ft_two_players_manager(t_rlines map)
 		}
 	}
 	if (i.count == 0)
-		return ('a' + i.count2 == 0 && (i.count1 == 1 || i.count1 == 0));
+		return ('a' + (i.count2 == 0 && (i.count1 == 1 || i.count1 == 0)));
 	if (i.count == 1)
-		return ('c' + i.count1 == 1 && i.count2 > 0);
+		return ('c' + (i.count1 == 1 && i.count2 > 0));
 	return ('e');
 }
 

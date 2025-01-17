@@ -51,7 +51,7 @@ static int	is_doable(t_rlines map)
 				return (0);
 		}
 	}
-	return (i.count2 > 0);
+	return (i.count == 1 && i.count1 == 1 && i.count2 > 0);
 }
 
 static int	valid_door_placement(t_gobj *game)
