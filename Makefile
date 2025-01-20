@@ -73,7 +73,7 @@ bonus: $(PRINTF) $(LIBFT) $(OBJ)
 
 mlx:
 	@rm -rf mlx-linux
-	@git clone git@github.com:42Paris/minilibx-linux.git mlx-linux
+	@git clone https://github.com/42Paris/minilibx-linux.git mlx-linux
 	@chmod 0777 mlx-linux/configure
 	@cd mlx-linux && ./configure
 	@cd ..
