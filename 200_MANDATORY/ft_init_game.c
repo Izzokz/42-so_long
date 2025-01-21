@@ -26,7 +26,6 @@ static void	ft_init_gobj(t_gobj *game, t_player *p1)
 	game->p1 = p1;
 	game->win = NULL;
 	game->imgs = NULL;
-	game->dmap = NULL;
 	game->map = NULL;
 	game->ticks = 0;
 	mlx_get_screen_size(game->mlx, &(game->win_i), &(game->win_j));

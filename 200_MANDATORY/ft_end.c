@@ -23,8 +23,6 @@ void	ft_end(t_gobj *game, int exit_id)
 	while (game->imgs && game->imgs[++i])
 		mlx_destroy_image(game->mlx, game->imgs[i]);
 	free(game->imgs);
-	if (game->dmap)
-		mlx_destroy_image(game->mlx, game->dmap);
 	if (game->win)
 		mlx_destroy_window(game->mlx, game->win);
 	if (game->mlx)

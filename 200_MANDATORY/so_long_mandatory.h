@@ -33,7 +33,6 @@ typedef struct s_gobj
 	void		*win;
 	void		**imgs;
 	t_rlines	map;
-	void		*dmap;
 	t_player	*p1;
 	int			ticks;
 	int			win_i;
