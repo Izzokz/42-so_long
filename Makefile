@@ -65,10 +65,10 @@ MAKEFLAGS += --no-print-directory
 all: $(NAME)
 
 $(NAME): $(PRINTF) $(LIBFT) $(MOBJ)
-	@cc -Wall -Werror -Wextra -g3 $(MOBJ) -Lmlx_linux -lmlx_Linux -Lmlx-linux -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME) $(LIBFT) $(PRINTF)
+	@cc -Wall -Werror -Wextra -g3 $(MOBJ) -lmlx_Linux -Lmlx-linux -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME) $(LIBFT) $(PRINTF)
 
 bonus: $(PRINTF) $(LIBFT) $(OBJ)
-	@$(CCA) $(OBJ) -Lmlx_linux -lmlx_Linux -Lmlx-linux -Imlx_linux -lXext -lX11 -lm -lz -o so_long $(LIBFT) $(PRINTF)
+	@$(CCA) $(OBJ) -lmlx_Linux -Lmlx-linux -Imlx_linux -lXext -lX11 -lm -lz -o so_long $(LIBFT) $(PRINTF)
 	@printf "\n\033[32m\033[1mso_long: \033[1;97mBuild Complete !\033[0m\n"
 
 dep:
