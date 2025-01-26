@@ -71,6 +71,13 @@ bonus: $(PRINTF) $(LIBFT) $(OBJ)
 	@$(CCA) $(OBJ) -Lmlx_linux -lmlx_Linux -Lmlx-linux -Imlx_linux -lXext -lX11 -lm -lz -o so_long $(LIBFT) $(PRINTF)
 	@printf "\n\033[32m\033[1mso_long: \033[1;97mBuild Complete !\033[0m\n"
 
+dep:
+	@sudo apt-get install gcc
+	@sudo apt-get install make
+	@sudo apt-get install xorg
+	@sudo apt-get install libxext-dev
+	@sudo apt-get install libbsd-dev
+
 mlx:
 	@rm -rf mlx-linux
 	@git clone https://github.com/42Paris/minilibx-linux.git mlx-linux
