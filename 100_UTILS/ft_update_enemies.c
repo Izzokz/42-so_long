@@ -41,7 +41,7 @@ static int	ft_clone_enemies(t_enemy ***from, t_enemy ***to, int id)
 	return (0);
 }
 
-static int	ft_dealloc_enemies(t_gobj *game, int id)
+int	ft_dealloc_enemies(t_gobj *game, int id)
 {
 	t_enemy	**tmp;
 	int		len;

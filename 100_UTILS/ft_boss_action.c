@@ -12,28 +12,6 @@
 
 #include "../so_long.h"
 
-static void	change_plr_spd(t_player *plr, int val)
-{
-	static int	plr_s1 = 0;
-	static int	plr_s2 = 0;
-
-	if (plr->exit == 'E' && plr->spd != 0)
-		plr_s1 = plr->spd;
-	if (plr->exit == '#' && plr->spd != 0)
-		plr_s2 = plr->spd;
-	if (plr->exit == 'E' && val == 69 && plr_s1 != 0)
-	{
-		plr->spd = plr_s1;
-		return ;
-	}
-	if (plr->exit == '#' && val == 69 && plr_s2 != 0)
-	{
-		plr->spd = plr_s2;
-		return ;
-	}
-	plr->spd = val;
-}
-
 int	summon_enemy(t_gobj *gm, int i, int j)
 {
 	int	rand;
@@ -65,8 +43,52 @@ void	init_shoot(t_gobj *game, int i, int j)
 	ft_update_tile(game, j / 32, i / 32);
 }
 
-void	annihilate(t_gobj *g, int i, int j)
+static void	annihilate_enemies(t_gobj *game, int i, int j)
 {
+	int		x[3];
+	t_enemy	*e;
+
+	*x = -1;
+	while (*(game->enemies + ++(*x)))
+	{
+		e = *(game->enemies + *x);
+		if (e->type == 'b' || e->type == 'B')
+			continue ;
+		if ((e->i / 32 == i / 32 && e->j / 32 == j / 32)
+			|| ((e->i + 15) / 32 == i / 32 && e->j / 32 == j / 32)
+			|| (e->i / 32 == i / 32 && (e->j + 15) / 32 == j / 32)
+			|| ((e->i + 15) / 32 == i / 32
+				&& (e->j + 15) / 32 == j / 32))
+		{
+			*(x + 1) = e->i;
+			*(x + 2) = e->j;
+			if (ft_dealloc_enemies(game, *x) == -1)
+				ft_end(game,
+					ft_printf_err("Error deallocating enemies%*.\n", 2));
+			ft_validate_boss(game);
+			ft_update_dmap(game, *(x + 1), *(x + 2));
+			(*x)--;
+		}
+	}
+}
+
+static t_enemy	*get_boss(t_gobj *game, char type)
+{
+	int	i;
+
+	i = -1;
+	while (*(game->enemies + ++i))
+	{
+		if ((*(game->enemies + i))->type == type)
+			return (*(game->enemies + i));
+	}
+	return (NULL);
+}
+
+void	annihilate(t_gobj *g, int i, int j, t_enemy **ene)
+{
+	char	type;
+
 	if (!g->p1->finish && ((g->p1->i / 32 == i / 32 && g->p1->j / 32 == j / 32)
 			|| ((g->p1->i + 15) / 32 == i / 32 && g->p1->j / 32 == j / 32)
 			|| (g->p1->i / 32 == i / 32 && (g->p1->j + 15) / 32 == j / 32)
@@ -86,31 +108,8 @@ void	annihilate(t_gobj *g, int i, int j)
 		ft_restart(g, 1);
 	}
 	g->str.map[j / 32][i / 32] = '0';
+	type = (*ene)->type;
+	annihilate_enemies(g, i, j);
+	*ene = get_boss(g, type);
 	ft_update_tile(g, j / 32, i / 32);
-}
-
-void	ft_boss_action(t_gobj *game, t_enemy *ene, t_player *plr)
-{
-	if (ene->ticks % 2)
-		return ;
-	if (ene->ticks % 500 == 60 || ene->ticks % 500 == 90
-		|| ene->ticks % 500 == 120 || ene->ticks % 500 == 150)
-	{
-		if (ene->ticks % 500 > 60)
-			annihilate(game, ene->t_i, ene->t_j);
-		if (ene->ticks % 500 < 150)
-		{
-			init_shoot(game, plr->i, plr->j);
-			ene->t_i = plr->i;
-			ene->t_j = plr->j;
-		}
-	}
-	if (ene->ticks % 100 == 0)
-		change_plr_spd(plr, 0);
-	if (ene->ticks % 100 == 16)
-		change_plr_spd(plr, 69);
-	if (ft_random(200) == 200)
-		change_plr_spd(plr, 1);
-	if (ene->ticks % 200 == 0)
-		summon_enemy(game, ene->i / 32, ene->j / 32);
 }

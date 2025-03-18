@@ -80,4 +80,9 @@ typedef struct s_gobj
 	int			paint;
 }		t_gobj;
 
+typedef struct s_fiveposbits
+{
+	int	fb : 6;
+}		t_fiveposbits;
+
 #endif
