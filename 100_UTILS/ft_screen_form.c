@@ -60,13 +60,13 @@ void	ft_screen_form(t_gobj *game)
 				game->win_i, game->win_j);
 	if (!game->screen_form)
 	{
-		ft_printf_err("We had issue generating the screen form.", 1);
+		ft_printf("so_long:ft_screen_form.c:59:mlx_new_image() [fail]\n");
 		ft_end(game, -1);
 	}
 	data = mlx_get_data_addr(game->screen_form, &(d.count), &(d.len), &(d.z));
 	if (!data)
 	{
-		ft_printf_err("A problem ocured: ft_screen_form.c:47", 1);
+		ft_printf("so_long:ft_screen_form.c:66:mlx_get_data_addr() [fail]\n");
 		ft_end(game, -1);
 	}
 	d.height = game->win_j;

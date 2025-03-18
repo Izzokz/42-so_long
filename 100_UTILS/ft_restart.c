@@ -44,7 +44,7 @@ void	ft_restart(t_gobj *game, int retry)
 	retry_management(game, retry);
 	if (!game->str.next_map)
 	{
-		ft_printf_err("Sorry, we encountered issue generating another map", 1);
+		ft_printf("Sorry, we encountered issue generating another map\n");
 		ft_end(game, -1);
 	}
 	ft_free_enemies(&(game->enemies));

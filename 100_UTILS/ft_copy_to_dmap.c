@@ -38,10 +38,8 @@ void	ft_copy_to_dmap(t_gobj *game, void *img, int i, int j)
 	dmap_data = mlx_get_data_addr(game->dmap, &(d.count), &(d.len), &(d.z));
 	data = mlx_get_data_addr(img, &(d.count1), &(d.len1), &(d.z));
 	if (!dmap_data || !data)
-	{
-		ft_printf_err("A problem occured: ft_copy_to_dmap.c: 38||39", 1);
-		ft_end(game, -1);
-	}
+		ft_end(game, ft_printf("so_long:ft_copy_to_dmap.c:38||39:\
+mlx_get_data_addr() [fail]\n"));
 	d.x = i - 1;
 	d.height = d.len1 / (d.count1 / 8);
 	while (++(d.x) < i + d.height)

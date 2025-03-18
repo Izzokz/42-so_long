@@ -70,13 +70,13 @@ void	ft_create_enemy(t_gobj *game, char type, int i, int j)
 	ene = ft_calloc(1, sizeof(t_enemy));
 	if (!ene)
 	{
-		ft_printf_err("We had issue handling enemies", 1);
+		ft_printf("so_long:ft_set_entities.c:70:ft_calloc() [fail]\n");
 		ft_end(game, -1);
 	}
 	ft_init_ene_stats(ene, type, i, j);
 	if (ft_add_enemy(game, ene) == -1)
 	{
-		ft_printf_err("We had issue adding an enemy", 1);
+		ft_printf("so_long:ft_set_entities.c:77:ft_add_enemy() [fail]\n");
 		ft_end(game, -1);
 	}
 	if (type == 'Q' || type == 'b')

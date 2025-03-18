@@ -33,7 +33,7 @@ static int	ft_start_flood_fill(t_rlines map, int i, int j)
 	temp = ft_rlines_dup(map);
 	if (!temp)
 	{
-		ft_printf_err("so_long:ft_map_parser.c:33:ft_rlines_dup()", 0);
+		ft_printf("so_long:ft_map_parser.c:33:ft_rlines_dup() [fail]\n");
 		return (0);
 	}
 	ft_flood_fill(&temp, i, j);

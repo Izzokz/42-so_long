@@ -21,7 +21,7 @@ static int	ft_load_img(t_gobj *game, char *filename)
 	path = ft_strjoin("999_GOBJ/img/", filename);
 	if (!path)
 	{
-		ft_printf_err("A problem occured", 1);
+		ft_printf("so_long:ft_init_imgs.c:21:ft_strjoin [fail]\n");
 		return (-1);
 	}
 	img = mlx_xpm_file_to_image(game->mlx, path, &(i.x), &(i.y));

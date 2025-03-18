@@ -17,7 +17,7 @@ int	ft_get_map_data(t_gobj *game, const char *map_name)
 	game->map = ft_readfile(map_name);
 	if (invalid_rlines_free(&(game->map)))
 	{
-		ft_printf_err("Corrupted map_data", 1);
+		ft_printf("Corrupted map_data\n", 1);
 		return (-1);
 	}
 	return (0);

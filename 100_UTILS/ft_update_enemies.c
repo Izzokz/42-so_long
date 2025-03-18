@@ -83,10 +83,8 @@ int	ft_merge_from(t_gobj *game, t_enemy *ene, int id)
 			game->enemies[i]->type = 'M';
 			game->enemies[i]->spd = 2;
 			if (ft_dealloc_enemies(game, id) == -1)
-			{
-				ft_printf_err("Error: Merging to M", 1);
-				ft_end(game, -1);
-			}
+				ft_end(game, ft_printf("so_long:ft_update_enemies.c:85:\
+ft_dealloc_enemies() [fail]\n"));
 			ft_validate_boss(game);
 			return (1);
 		}

@@ -19,7 +19,7 @@ static void	ft_gen_dmap(t_gobj *game)
 				game->height * 32);
 	if (!game->dmap)
 	{
-		ft_printf_err("A problem occured: ft_print_map.c: 47", 1);
+		ft_printf("so_long:ft_printf_map.c:18:mlx_bew_image() [fail]\n");
 		ft_end(game, -1);
 	}
 }

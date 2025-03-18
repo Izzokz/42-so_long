@@ -43,7 +43,7 @@ int	main(int argc, char **argv)
 	game.mlx = mlx_init();
 	if (!game.mlx)
 	{
-		ft_printf_err("Sorry, the game doesn't want to load", 1);
+		ft_printf("There's no proper environment for the game to start.\n");
 		return (-1);
 	}
 	game.stage = 0;

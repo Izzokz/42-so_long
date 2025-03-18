@@ -63,8 +63,8 @@ static void	annihilate_enemies(t_gobj *game, int i, int j)
 			*(x + 1) = e->i;
 			*(x + 2) = e->j;
 			if (ft_dealloc_enemies(game, *x) == -1)
-				ft_end(game,
-					ft_printf_err("Error deallocating enemies%*.\n", 2));
+				ft_end(game, ft_printf("so_long:ft_boss_action.c:65:\
+ft_dealloc_enemies(%*.) [fail]\n"));
 			ft_validate_boss(game);
 			ft_update_dmap(game, *(x + 1), *(x + 2));
 			(*x)--;

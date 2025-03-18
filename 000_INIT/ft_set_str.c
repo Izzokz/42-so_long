@@ -39,13 +39,13 @@ int	ft_get_map_data(t_gobj *game, char *map_name)
 	path = ft_strjoin("999_GOBJ/maps/", map_name);
 	if (!path)
 	{
-		ft_printf_err("A problem occured (ft_set_str.c:29)", 1);
+		ft_printf("so_long:ft_set_str.c:39:ft_strjoin() [fail]\n");
 		return (-1);
 	}
 	map_data = ft_readfile_split(path, "\n");
 	if (invalid_slines(map_data))
 	{
-		ft_printf_err("Corrupted map_data", 1);
+		ft_printf("so_long:ft_set_str.c:45:invalid slines\n");
 		function_free(&map_data, path);
 		return (-1);
 	}
@@ -70,7 +70,7 @@ int	ft_set_str(t_gobj *game, char *map_name)
 		ft_slines_cutendl(&(str.msg));
 		if (!(str.msg))
 		{
-			ft_printf_err("A problem occured (ft_set_str.c:53)", 1);
+			ft_printf("so_long:ft_set_str.c:70:ft_slines_cutendl() [fail]\n");
 			return (-1);
 		}
 		game->str = str;
@@ -78,7 +78,7 @@ int	ft_set_str(t_gobj *game, char *map_name)
 	game->current_map = ft_strdup(map_name);
 	if (!(game->current_map))
 	{
-		ft_printf_err("A problem occured (ft_set_str.c:61)", 1);
+		ft_printf("so_long:ft_set_str.c:78:ft_strdup() [fail]\n");
 		return (-1);
 	}
 	return (0);
