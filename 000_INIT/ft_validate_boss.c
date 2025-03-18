@@ -33,7 +33,7 @@ void	ft_validate_boss(t_gobj *game)
 	}
 	if (t.count > 1 || t.count1 > 1)
 	{
-		ft_printf("It seems to be too much bosses...\n");
+		ft_printf("It seems there are too many bosses...\n");
 		ft_printf("You can add a maximum of one 'b' and one 'B' per map.\n");
 		ft_end(game, -1);
 	}
