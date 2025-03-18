@@ -94,11 +94,11 @@ void	ft_boss_action(t_gobj *game, t_enemy *ene, t_player *plr)
 	if (ene->ticks % 2)
 		return ;
 	if (ene->ticks % 500 == 60 || ene->ticks % 500 == 90
-		|| ene->ticks % 500 == 120 || ene->ticks % 500 == 160)
+		|| ene->ticks % 500 == 120 || ene->ticks % 500 == 150)
 	{
 		if (ene->ticks % 500 > 60)
 			annihilate(game, ene->t_i, ene->t_j);
-		if (ene->ticks % 500 < 160)
+		if (ene->ticks % 500 < 150)
 		{
 			init_shoot(game, plr->i, plr->j);
 			ene->t_i = plr->i;
