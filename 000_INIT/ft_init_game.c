@@ -12,17 +12,22 @@
 
 #include "../so_long.h"
 
-void	ft_init_player(t_player *player, int plrid)
+static void	ft_init_player(t_gobj *game, t_player *p1, t_player *p2)
 {
-	player->i = 0;
-	player->j = 0;
-	player->spd = SPEED;
-	player->moves = 0;
-	player->exit = 'E' + (((plrid + 1) % 2) * ('#' - 'E'));
-	if (plrid == 2)
-		player->finish = -2;
-	else
-		player->finish = 0;
+	p1->i = 0;
+	p1->j = 0;
+	p1->spd = SPEED;
+	p1->moves = 0;
+	p1->exit = 'E';
+	p1->finish = 0;
+	p2->i = 0;
+	p2->j = 0;
+	p2->spd = SPEED;
+	p2->moves = 0;
+	p2->exit = '#';
+	p2->finish = -2;
+	game->p1 = p1;
+	game->p2 = p2;
 }
 
 static void	ft_set_keys_off(t_gobj *game)
@@ -54,13 +59,10 @@ static void	ft_set_keys_off(t_gobj *game)
 static void	ft_init_gobj(t_gobj *game, t_player *p1,
 	t_player *p2, char *map_name)
 {
-	ft_init_player(p1, 1);
-	ft_init_player(p2, 2);
+	ft_init_player(game, p1, p2);
 	game->enemies = NULL;
 	if (game->stage == 0 && game->retry == 0)
 	{
-		game->p1 = p1;
-		game->p2 = p2;
 		game->win = NULL;
 		game->imgs = NULL;
 		game->dmap = NULL;

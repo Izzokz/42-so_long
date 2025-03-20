@@ -104,6 +104,5 @@ void	ft_move_enemies(t_gobj *game)
 			game->p2->finish = -1;
 			ft_restart(game, 1);
 		}
-		ft_update_dmap(game, game->enemies[i]->i, game->enemies[i]->j);
 	}
 }

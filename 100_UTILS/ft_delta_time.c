@@ -12,20 +12,37 @@
 
 #include "../so_long.h"
 #include <time.h>
+#include <stdio.h>
 
-float	ft_delta_time(void)
+char	ft_fps_match(void)
+{
+	static int	tick_counter = 0;
+	static int	ticks_per_frame = 0;
+
+	ticks_per_frame = 350 / 60;
+	tick_counter++;
+	if (tick_counter >= ticks_per_frame)
+	{
+		tick_counter = 0;
+		return (1);
+	}
+	return (0);
+}
+
+char	ft_speed_match_process(void)
 {
 	static struct timespec	last_time = {0, 0};
 	struct timespec			current_time;
-	float					delta;
+	float					deltaxtime[2];
 
+	deltaxtime[1] = 1.0f / 350;
 	clock_gettime(CLOCK_MONOTONIC, &current_time);
-	delta = (current_time.tv_sec - last_time.tv_sec)
+	deltaxtime[0] = (current_time.tv_sec - last_time.tv_sec)
 		+ (current_time.tv_nsec - last_time.tv_nsec) / 1000000000.0f;
-	if (delta < 0)
-		delta += 1.0f;
-	if (delta > 0.1f)
-		delta = 0.1f;
-	last_time = current_time;
-	return (delta);
+	if (deltaxtime[0] >= deltaxtime[1])
+	{
+		last_time = current_time;
+		return (1);
+	}
+	return (0);
 }

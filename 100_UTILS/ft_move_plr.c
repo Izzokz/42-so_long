@@ -56,7 +56,6 @@ void	ft_move_plr_n(t_gobj *game, t_player *plr)
 	ft_paint_floor(game, plr);
 	game->keys += ft_collect_key(game, plr->i, plr->j);
 	ft_exit_area(game, &plr);
-	ft_update_dmap(game, plr->i, plr->j);
 }
 
 void	ft_move_plr_s(t_gobj *game, t_player *plr)
@@ -81,7 +80,6 @@ void	ft_move_plr_s(t_gobj *game, t_player *plr)
 	ft_paint_floor(game, plr);
 	game->keys += ft_collect_key(game, plr->i, plr->j);
 	ft_exit_area(game, &plr);
-	ft_update_dmap(game, plr->i, plr->j);
 }
 
 void	ft_move_plr_w(t_gobj *game, t_player *plr)
@@ -106,7 +104,6 @@ void	ft_move_plr_w(t_gobj *game, t_player *plr)
 	ft_paint_floor(game, plr);
 	game->keys += ft_collect_key(game, plr->i, plr->j);
 	ft_exit_area(game, &plr);
-	ft_update_dmap(game, plr->i, plr->j);
 }
 
 void	ft_move_plr_e(t_gobj *game, t_player *plr)
@@ -131,5 +128,4 @@ void	ft_move_plr_e(t_gobj *game, t_player *plr)
 	ft_paint_floor(game, plr);
 	game->keys += ft_collect_key(game, plr->i, plr->j);
 	ft_exit_area(game, &plr);
-	ft_update_dmap(game, plr->i, plr->j);
 }

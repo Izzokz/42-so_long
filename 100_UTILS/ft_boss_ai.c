@@ -48,10 +48,7 @@ static void	ft_boss_action2(t_gobj *game, t_enemy *ene, t_player *plr)
 		if (++i.fb <= 31 && i.fb > 0)
 			game->theme = (float)i.fb * (1.0f / 32.0f);
 		else
-		{
 			game->theme = init_theme;
-			ft_print_map(game);
-		}
 	}
 	if (rand == 200)
 		change_plr_spd(plr, 1);

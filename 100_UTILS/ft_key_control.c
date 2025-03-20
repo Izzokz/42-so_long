@@ -15,7 +15,6 @@
 static void	ft_refresh_window(t_gobj *game)
 {
 	ft_change_screen_form(game);
-	ft_print_map(game);
 }
 
 static void	ft_brightness(t_gobj *game)
@@ -96,27 +95,21 @@ static void	ft_key_control2(t_gobj *game)
 
 int	ft_key_control(t_gobj *game)
 {
-	static float	time_to_fps = 0.0f;
 	int				moveable;
 
-	time_to_fps += ft_delta_time();
-	while (time_to_fps >= (1.0f / FPS))
-	{
-		moveable = !(game->p1->finish);
-		time_to_fps -= (1.0f / FPS);
-		if (game->keys_state[XK_Control_L] && game->keys_state[XK_r])
-			ft_restart(game, 1);
-		if (game->keys_state[XK_Escape])
-			ft_quit_game(game);
-		if (game->keys_state[XK_w] && !game->keys_state[XK_s] && moveable)
-			ft_move_plr_n(game, game->p1);
-		if (game->keys_state[XK_a] && !game->keys_state[XK_d] && moveable)
-			ft_move_plr_w(game, game->p1);
-		if (game->keys_state[XK_s] && !game->keys_state[XK_w] && moveable)
-			ft_move_plr_s(game, game->p1);
-		if (game->keys_state[XK_d] && !game->keys_state[XK_a] && moveable)
-			ft_move_plr_e(game, game->p1);
-		ft_key_control2(game);
-	}
+	moveable = !(game->p1->finish);
+	if (game->keys_state[XK_Control_L] && game->keys_state[XK_r])
+		ft_restart(game, 1);
+	if (game->keys_state[XK_Escape])
+		ft_quit_game(game);
+	if (game->keys_state[XK_w] && !game->keys_state[XK_s] && moveable)
+		ft_move_plr_n(game, game->p1);
+	if (game->keys_state[XK_a] && !game->keys_state[XK_d] && moveable)
+		ft_move_plr_w(game, game->p1);
+	if (game->keys_state[XK_s] && !game->keys_state[XK_w] && moveable)
+		ft_move_plr_s(game, game->p1);
+	if (game->keys_state[XK_d] && !game->keys_state[XK_a] && moveable)
+		ft_move_plr_e(game, game->p1);
+	ft_key_control2(game);
 	return (0);
 }

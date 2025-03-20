@@ -17,10 +17,6 @@
 #  define SPEED 1.0f
 # endif
 
-# ifndef FPS // Force Player Speed
-#  define FPS 220.0f
-# endif
-
 typedef struct s_player
 {
 	int		moves;

@@ -28,7 +28,7 @@ static int	key_disable(int keycode, t_gobj *game)
 
 static int	all_processes(t_gobj *game)
 {
-	if (game->loaded)
+	if (game->loaded && ft_speed_match_process())
 	{
 		ft_unlock_player(game, game->p1);
 		if (game->p1->i <= 0 || game->p1->i >= game->width * 32
@@ -42,12 +42,14 @@ static int	all_processes(t_gobj *game)
 			&& (game->p2->i <= 0 || game->p2->i >= game->width * 32
 				|| game->p2->j <= 0
 				|| game->p2->j >= game->height * 32))
-		{
-			ft_printf("The impossible happened...\n");
-			ft_restart(game, 1);
-		}
+			ft_restart(game, ft_printf("The impossible happened...%*.\n") + 2);
 		ft_key_control(game);
 		is_complete(game);
+		if (ft_fps_match())
+		{
+			ft_print_map(game);
+			ft_print_stats(game);
+		}
 	}
 	return (0);
 }

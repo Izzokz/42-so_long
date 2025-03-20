@@ -31,17 +31,11 @@ static void	get_safe_pos2(t_gobj *gm, t_player *plr, char direc)
 	if (direc == 'w')
 	{
 		while (!is_valid_move(gm, plr->i, plr->j))
-		{
 			(plr->i)--;
-			ft_update_dmap(gm, plr->i, plr->j);
-		}
 		return ;
 	}
 	while (!is_valid_move(gm, plr->i, plr->j))
-	{
 		(plr->i)++;
-		ft_update_dmap(gm, plr->i, plr->j);
-	}
 }
 
 static void	get_safe_pos(t_gobj *gm, t_player *plr, char direc)
@@ -49,19 +43,13 @@ static void	get_safe_pos(t_gobj *gm, t_player *plr, char direc)
 	if (direc == 'n')
 	{
 		while (!is_valid_move(gm, plr->i, plr->j))
-		{
 			(plr->j)--;
-			ft_update_dmap(gm, plr->i, plr->j);
-		}
 		return ;
 	}
 	else if (direc == 's')
 	{
 		while (!is_valid_move(gm, plr->i, plr->j))
-		{
 			(plr->j)++;
-			ft_update_dmap(gm, plr->i, plr->j);
-		}
 		return ;
 	}
 	return (get_safe_pos2(gm, plr, direc));

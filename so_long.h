@@ -20,7 +20,6 @@
 # include "so_long_gobj.h"
 # include <X11/keysym.h>
 
-float	ft_delta_time(void);
 void	init_shoot(t_gobj *game, int i, int j);
 void	annihilate(t_gobj *game, int i, int j, t_enemy **ene);
 int		ft_click(int button, int x, int y, t_gobj *game);
@@ -33,7 +32,6 @@ int		are_valid_walls(t_rlines map);
 int		is_rect_map(t_rlines map);
 int		ft_init_imgs(t_gobj *game);
 int		ft_init_window(t_gobj *game);
-void	ft_init_player(t_player *player, int plrid);
 int		ft_init_game(t_gobj *game, t_player *p1, t_player *p2, char *map_name);
 void	ft_print_stats(t_gobj *game);
 int		ft_get_map_data(t_gobj *game, char *map_name);
@@ -81,5 +79,7 @@ void	ft_set_rules(t_gobj *game, t_rlines rules);
 void	ft_end(t_gobj *game, int exit_id);
 void	ft_map_parser(t_gobj *game, char *map_name);
 void	ft_restart(t_gobj *game, int retry);
+char	ft_fps_match(void);
+char	ft_speed_match_process(void);
 
 #endif

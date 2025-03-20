@@ -65,7 +65,6 @@ static int	ft_set_pos(t_gobj *game, t_enemy *ene, int i, int j)
 	prev_j = ene->j;
 	ene->i = i * 32;
 	ene->j = j * 32;
-	ft_update_dmap(game, prev_i, prev_j);
 	return (1);
 }
 

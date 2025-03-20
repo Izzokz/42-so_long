@@ -66,7 +66,6 @@ static void	annihilate_enemies(t_gobj *game, int i, int j)
 				ft_end(game, ft_printf("so_long:ft_boss_action.c:65:\
 ft_dealloc_enemies(%*.) [fail]\n"));
 			ft_validate_boss(game);
-			ft_update_dmap(game, *(x + 1), *(x + 2));
 			(*x)--;
 		}
 	}
